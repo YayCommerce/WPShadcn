@@ -1,4 +1,4 @@
-# WP Shadcn
+# Shadcn
 
 A modern, lightweight WordPress theme built with Shadcn UI components and contemporary web technologies.
 
@@ -34,8 +34,8 @@ WP Shadcn is designed for developers and content creators who value clean code a
 
 1. **Upload the theme:**
    ```bash
-   # Copy the wpshadcn folder to your WordPress themes directory
-   cp -r wpshadcn /path/to/wp-content/themes/
+   # Copy the shadcn folder to your WordPress themes directory
+   cp -r shadcn /path/to/wp-content/themes/
    ```
 
 2. **Activate the theme:**
@@ -83,7 +83,7 @@ WP Shadcn is designed for developers and content creators who value clean code a
 ## 📦 File Structure
 
 ```
-wpshadcn/
+shadcn/
 ├── assets/
 │   ├── css/              # Stylesheets
 │   ├── fonts/            # Geist font files
@@ -131,5 +131,5 @@ For support, questions, or to report bugs, please contact the theme author or vi
 
 ---
 
-**Copyright © 2025 WPShadcn**  
-WPShadcn is distributed under the terms of the GNU GPL
+**Copyright © 2025 Shadcn**  
+WP Shadcn is distributed under the terms of the GNU GPL

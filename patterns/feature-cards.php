@@ -1,13 +1,13 @@
 <?php
 /**
  * Title: Feature Cards
- * Slug: wpshadcn/feature-cards
- * Categories: wpshadcn-cards
+ * Slug: shadcn/feature-cards
+ * Categories: shadcn-cards
  * Description: A grid of feature cards showcasing key benefits or services.
  */
 
 ?>
-<!-- wp:group {"metadata":{"categories":["wpshadcn-cards"],"patternName":"wpshadcn/feature-cards","name":"Feature Cards"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|4","right":"var:preset|spacing|4"}},"color":{"background":"var:preset|color|background","text":"var:preset|color|foreground"}},"layout":{"type":"constrained"}} -->
+<!-- wp:group {"metadata":{"categories":["shadcn-cards"],"patternName":"shadcn/feature-cards","name":"Feature Cards"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|4","right":"var:preset|spacing|4"}},"color":{"background":"var:preset|color|background","text":"var:preset|color|foreground"}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull has-text-color has-background" style="color:var(--wp--preset--color--foreground);background-color:var(--wp--preset--color--background);padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--4);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--4)"><!-- wp:heading {"textAlign":"center","style":{"typography":{"fontWeight":"700","lineHeight":"1.1","fontStyle":"normal"}},"fontSize":"4xl"} -->
 <h2 class="wp-block-heading has-text-align-center has-4-xl-font-size" style="font-style:normal;font-weight:700;line-height:1.1">Why Choose Us</h2>
 <!-- /wp:heading -->

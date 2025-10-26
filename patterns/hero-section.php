@@ -1,13 +1,13 @@
 <?php
 /**
  * Title: Hero Section
- * Slug: wpshadcn/hero-section
- * Categories: wpshadcn
+ * Slug: shadcn/hero-section
+ * Categories: shadcn
  * Description: A hero section with title, description, and call-to-action buttons.
  */
 
 ?>
-<!-- wp:group {"metadata":{"categories":["wpshadcn"],"patternName":"wpshadcn/hero-section","name":"Hero Section"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|4","right":"var:preset|spacing|4"}}},"layout":{"type":"constrained","contentSize":"800px"}} -->
+<!-- wp:group {"metadata":{"categories":["shadcn"],"patternName":"shadcn/hero-section","name":"Hero Section"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|4","right":"var:preset|spacing|4"}}},"layout":{"type":"constrained","contentSize":"800px"}} -->
 <div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--4);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--4)"><!-- wp:heading {"textAlign":"center","level":1,"style":{"typography":{"fontWeight":"700","lineHeight":"1.1","fontStyle":"normal"}},"fontSize":"5xl"} -->
 <h1 class="wp-block-heading has-text-align-center has-5-xl-font-size" style="font-style:normal;font-weight:700;line-height:1.1">Welcome to Our Website</h1>
 <!-- /wp:heading -->

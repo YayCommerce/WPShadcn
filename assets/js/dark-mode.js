@@ -9,7 +9,7 @@
     // Check if dark mode is enabled
     function isDarkMode() {
         return document.documentElement.classList.contains('dark') || 
-               localStorage.getItem('wpshadcn_dark_mode') === 'true';
+               localStorage.getItem('shadcn_dark_mode') === 'true';
     }
 
     // Helper function to set cookie
@@ -41,11 +41,11 @@
         }
         
         // Update localStorage
-        localStorage.setItem('wpshadcn_dark_mode', newMode.toString());
+        localStorage.setItem('shadcn_dark_mode', newMode.toString());
         
         // Update cookie for server-side rendering (to prevent FOUC on next page load)
         const cookieValue = newMode ? 'dark' : 'light';
-        setCookie('wpshadcn-theme-mode', cookieValue);
+        setCookie('shadcn-theme-mode', cookieValue);
         
         // Update button icon
         updateToggleButton(newMode);
@@ -83,8 +83,8 @@
     // Initialize dark mode on page load
     function initDarkMode() {
         // Check for saved preference or default to light mode
-        const cookieMode = getCookie('wpshadcn-theme-mode');
-        const savedMode = localStorage.getItem('wpshadcn_dark_mode');
+        const cookieMode = getCookie('shadcn-theme-mode');
+        const savedMode = localStorage.getItem('shadcn_dark_mode');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         
         let shouldBeDark = false;
@@ -113,7 +113,7 @@
     // Handle system theme changes
     function handleSystemThemeChange(e) {
         // Only apply system preference if user hasn't manually set a preference
-        if (localStorage.getItem('wpshadcn_dark_mode') === null) {
+        if (localStorage.getItem('shadcn_dark_mode') === null) {
             if (e.matches) {
                 document.documentElement.classList.add('dark');
                 document.documentElement.style.colorScheme = 'dark';

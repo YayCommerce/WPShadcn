@@ -15,13 +15,13 @@ function release {
 	mkdir -p "$(pwd)/release"
 
 	echo "Syncing files..."
-	rsync -rc --exclude-from="$(pwd)/.distignore" "$(pwd)/" "$(pwd)/release/wpshadcn" --delete --delete-excluded
+	rsync -rc --exclude-from="$(pwd)/.distignore" "$(pwd)/" "$(pwd)/release/shadcn" --delete --delete-excluded
 
 	echo "Generating zip file..."
 	cd release/
 
-	zip -q -r "wpshadcn.zip" "wpshadcn/"
-	rm -rf wpshadcn
+	zip -q -r "shadcn.zip" "shadcn/"
+	rm -rf shadcn
 	echo "Generated release file"
 
 	echo "Release successfully"

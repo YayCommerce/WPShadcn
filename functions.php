@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 /**
  * Theme setup
  */
-function wpshadcn_setup() {
+function shadcn_setup() {
     // Add theme support for various features
     add_theme_support('post-thumbnails');
     add_theme_support('title-tag');
@@ -31,15 +31,15 @@ function wpshadcn_setup() {
         'script',
     ));
 }
-add_action('after_setup_theme', 'wpshadcn_setup');
+add_action('after_setup_theme', 'shadcn_setup');
 
 /**
  * Enqueue scripts and styles
  */
-function wpshadcn_scripts() {
+function shadcn_scripts() {
     // Enqueue main stylesheet
     wp_enqueue_style(
-        'wpshadcn-style',
+        'shadcn-style',
         get_stylesheet_uri(),
         array(),
         wp_get_theme()->get('Version')
@@ -47,7 +47,7 @@ function wpshadcn_scripts() {
     
     // Enqueue dark mode toggle script
     wp_enqueue_script(
-        'wpshadcn-dark-mode',
+        'shadcn-dark-mode',
         get_template_directory_uri() . '/assets/js/dark-mode.js',
         array(),
         wp_get_theme()->get('Version'),
@@ -55,23 +55,23 @@ function wpshadcn_scripts() {
     );
     
     // Localize script for AJAX
-    wp_localize_script('wpshadcn-dark-mode', 'wpshadcn', array(
+    wp_localize_script('shadcn-dark-mode', 'shadcn', array(
         'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce' => wp_create_nonce('wpshadcn_nonce'),
+        'nonce' => wp_create_nonce('shadcn_nonce'),
     ));
 }
-add_action('wp_enqueue_scripts', 'wpshadcn_scripts');
+add_action('wp_enqueue_scripts', 'shadcn_scripts');
 
 /**
  * Register block styles
  */
-function wpshadcn_register_block_styles() {
+function shadcn_register_block_styles() {
     // Button block styles
     register_block_style(
         'core/button',
         array(
             'name' => 'outline',
-            'label' => __('Outline', 'wpshadcn'),
+            'label' => __('Outline', 'shadcn'),
         )
     );
     
@@ -79,7 +79,7 @@ function wpshadcn_register_block_styles() {
         'core/button',
         array(
             'name' => 'secondary',
-            'label' => __('Secondary', 'wpshadcn'),
+            'label' => __('Secondary', 'shadcn'),
         )
     );
     
@@ -87,7 +87,7 @@ function wpshadcn_register_block_styles() {
         'core/button',
         array(
             'name' => 'destructive',
-            'label' => __('Destructive', 'wpshadcn'),
+            'label' => __('Destructive', 'shadcn'),
         )
     );
     
@@ -95,7 +95,7 @@ function wpshadcn_register_block_styles() {
         'core/button',
         array(
             'name' => 'ghost',
-            'label' => __('Ghost', 'wpshadcn'),
+            'label' => __('Ghost', 'shadcn'),
         )
     );
     
@@ -103,7 +103,7 @@ function wpshadcn_register_block_styles() {
         'core/button',
         array(
             'name' => 'sm',
-            'label' => __('Small', 'wpshadcn'),
+            'label' => __('Small', 'shadcn'),
         )
     );
     
@@ -111,7 +111,7 @@ function wpshadcn_register_block_styles() {
         'core/button',
         array(
             'name' => 'lg',
-            'label' => __('Large', 'wpshadcn'),
+            'label' => __('Large', 'shadcn'),
         )
     );
     
@@ -120,7 +120,7 @@ function wpshadcn_register_block_styles() {
         'core/group',
         array(
             'name' => 'card',
-            'label' => __('Card', 'wpshadcn'),
+            'label' => __('Card', 'shadcn'),
         )
     );
 
@@ -128,30 +128,30 @@ function wpshadcn_register_block_styles() {
         'core/navigation',
         array(
             'name' => 'pill',
-            'label' => __('Pill', 'wpshadcn'),
+            'label' => __('Pill', 'shadcn'),
         ),
     );
 
 }
-add_action('init', 'wpshadcn_register_block_styles');
+add_action('init', 'shadcn_register_block_styles');
 
 /**
  * Add dark mode class to html element
  */
-function wpshadcn_html_classes($attributes) {
-    if (isset($_COOKIE['wpshadcn-theme-mode']) && $_COOKIE['wpshadcn-theme-mode'] === 'dark') {
+function shadcn_html_classes($attributes) {
+    if (isset($_COOKIE['shadcn-theme-mode']) && $_COOKIE['shadcn-theme-mode'] === 'dark') {
         $attributes .= ' class="dark" style="color-scheme: dark;"';
     }
     
     return $attributes;
 }
-add_filter('language_attributes', 'wpshadcn_html_classes');
+add_filter('language_attributes', 'shadcn_html_classes');
 
 /**
  * Add inline script to sync localStorage to cookie for server-side rendering
  * This prevents FOUC (Flash of Unstyled Content)
  */
-function wpshadcn_add_dark_mode_sync() {
+function shadcn_add_dark_mode_sync() {
     ?>
     <script>
         (function() {
@@ -170,16 +170,16 @@ function wpshadcn_add_dark_mode_sync() {
             
             // Check if we have localStorage preference
             try {
-                const savedMode = localStorage.getItem('wpshadcn_dark_mode');
+                const savedMode = localStorage.getItem('shadcn_dark_mode');
                 if (savedMode !== null) {
                     // Set cookie to match localStorage
                     const cookieValue = savedMode === 'true' ? 'dark' : 'light';
-                    setCookieValue('wpshadcn-theme-mode', cookieValue);
+                    setCookieValue('shadcn-theme-mode', cookieValue);
                 } else {
                     // Check system preference and set cookie
                     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                     const cookieValue = prefersDark ? 'dark' : 'light';
-                    setCookieValue('wpshadcn-theme-mode', cookieValue);
+                    setCookieValue('shadcn-theme-mode', cookieValue);
                 }
             } catch(e) {
                 // Ignore localStorage errors
@@ -189,21 +189,21 @@ function wpshadcn_add_dark_mode_sync() {
     </script>
     <?php
 }
-add_action('wp_head', 'wpshadcn_add_dark_mode_sync', 1);
+add_action('wp_head', 'shadcn_add_dark_mode_sync', 1);
 
 /**
  * Custom block editor styles
  */
-function wpshadcn_editor_styles() {
+function shadcn_editor_styles() {
     add_theme_support('editor-styles');
     add_editor_style('assets/css/editor-style.css');
 }
-add_action('after_setup_theme', 'wpshadcn_editor_styles');
+add_action('after_setup_theme', 'shadcn_editor_styles');
 
 /**
  * Add support for starter content
  */
-function wpshadcn_starter_content_setup() {
+function shadcn_starter_content_setup() {
     add_theme_support('starter-content', array(
         'widgets' => array(
             'sidebar-1' => array(
@@ -240,7 +240,7 @@ function wpshadcn_starter_content_setup() {
         ),
         'nav_menus' => array(
             'top' => array(
-                'name' => __('Top Menu', 'wpshadcn'),
+                'name' => __('Top Menu', 'shadcn'),
                 'items' => array(
                     'link_home',
                     'page_about',
@@ -249,7 +249,7 @@ function wpshadcn_starter_content_setup() {
                 ),
             ),
             'social' => array(
-                'name' => __('Social Links Menu', 'wpshadcn'),
+                'name' => __('Social Links Menu', 'shadcn'),
                 'items' => array(
                     'link_yelp',
                     'link_facebook',
@@ -261,12 +261,12 @@ function wpshadcn_starter_content_setup() {
         ),
     ));
 }
-add_action('after_setup_theme', 'wpshadcn_starter_content_setup');
+add_action('after_setup_theme', 'shadcn_starter_content_setup');
 
 /**
  * Create demo navigation post for footer
  */
-function wpshadcn_create_demo_navigation() {
+function shadcn_create_demo_navigation() {
     // Check if navigation post already exists
     $existing_nav = get_posts(
             array(
@@ -304,5 +304,5 @@ function wpshadcn_create_demo_navigation() {
         error_log('Footer navigation post created with ID: ' . $nav_post_id);
     }
 }
-add_action('after_setup_theme', 'wpshadcn_create_demo_navigation', 20);
+add_action('after_setup_theme', 'shadcn_create_demo_navigation', 20);
 

@@ -1,11 +1,13 @@
-=== WP Shadcn ===
-Contributors: WPShadcn
-Requires at least: 6.4
-Tested up to: 6.7
-Requires PHP: 7.4
-Version: 1.0.0
-License: GNU General Public License v2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+=== Shadcn ===
+Contributors: yaycommerce
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Tags: blog, block-patterns, full-site-editing
+Tested up to: 6.8.2
+Requires PHP: 5.3
+Stable tag: 1.3
+
+WP Shadcn is a modern, lightweight WordPress theme built with Shadcn UI components and contemporary web technologies.
 
 == Description ==
 
@@ -27,7 +29,7 @@ WP Shadcn is a modern, lightweight WordPress theme built with Shadcn UI componen
 
 == Installation ==
 
-1. Upload the `wpshadcn` folder to your WordPress themes directory (usually `/wp-content/themes/`)
+1. Upload the `shadcn` folder to your WordPress themes directory (usually `/wp-content/themes/`)
 2. Go to Appearance > Themes in the WordPress admin dashboard
 3. Find "WP Shadcn" and click "Activate"
 4. (Optional) Go to Appearance > Editor to adjust theme settings
@@ -77,5 +79,5 @@ For support, questions, or to report bugs, please contact the theme author or vi
 This theme is licensed under the GNU General Public License v2 or later.
 
 == Copyright ==
-WPShadcn Theme, Copyright 2025 WPShadcn.
-WPShadcn is distributed under the terms of the GNU GPL
+WP Shadcn Theme, Copyright 2025 WPShadcn.
+WP Shadcn is distributed under the terms of the GNU GPL
