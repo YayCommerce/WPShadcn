@@ -124,6 +124,14 @@ function wpshadcn_register_block_styles() {
         )
     );
 
+    register_block_style(
+        'core/navigation',
+        array(
+            'name' => 'pill',
+            'label' => __('Pill', 'wpshadcn'),
+        ),
+    );
+
 }
 add_action('init', 'wpshadcn_register_block_styles');
 
