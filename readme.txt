@@ -30,12 +30,11 @@ WP Shadcn is a modern, lightweight WordPress theme built with Shadcn UI componen
 1. Upload the `wpshadcn` folder to your WordPress themes directory (usually `/wp-content/themes/`)
 2. Go to Appearance > Themes in the WordPress admin dashboard
 3. Find "WP Shadcn" and click "Activate"
-4. (Optional) Go to Appearance > Customize to adjust theme settings
+4. (Optional) Go to Appearance > Editor to adjust theme settings
 
 == Getting Started ==
 
-1. **Customize Your Site**: Visit Appearance > Customize to personalize colors, fonts, and layout
-2. **Configure Theme Settings**: Adjust header and footer content through the WordPress customizer
+2. **Configure Theme Settings**: Adjust header and footer content through the WordPress Site Editor
 3. **Create Content**: Use the included block patterns for quick page creation
 4. **Dark Mode**: The theme includes built-in dark mode support that respects user preferences
 
@@ -76,3 +75,7 @@ For support, questions, or to report bugs, please contact the theme author or vi
 == License ==
 
 This theme is licensed under the GNU General Public License v2 or later.
+
+== Copyright ==
+WPShadcn Theme, Copyright 2025 WPShadcn.
+WPShadcn is distributed under the terms of the GNU GPL

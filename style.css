@@ -1,5 +1,5 @@
 /*
-Theme Name: Shadcn WP Theme
+Theme Name: WPShadcn
 Theme URI: https://github.com/YayCommerce/WPShadcn
 Author: WPShadcn
 Author URI: https://wpshadcn.com
@@ -8,10 +8,10 @@ Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
 Version: 1.0.0
-License: GPL v2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: wpshadcn
-Tags: full-site-editing, block-theme, accessibility-ready, custom-colors, custom-logo, custom-menu, editor-style, featured-images, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-patterns, block-styles, style-variations, blog, portfolio, news, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, grid-layout, flexible-header, footer-widgets, full-width-template
+Tags: full-site-editing, custom-colors, custom-logo, custom-menu, editor-style, featured-images, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-patterns, block-styles, style-variations, blog, portfolio, news, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, grid-layout, flexible-header, footer-widgets, full-width-template
 */
 
 /* ==========================================================================
