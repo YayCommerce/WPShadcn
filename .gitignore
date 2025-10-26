@@ -1,0 +1,12 @@
+.vscode
+**/.DS_Store
+composer.json
+composer.lock
+
+/release
+
+node_modules/
+log.xml
+
+/vendor
+tools/vendor

@@ -1,0 +1,97 @@
+/*
+ * Editor Styles for Shadcn WP Theme
+ * Styles applied in the block editor
+ */
+
+/* Import the same CSS variables as the frontend */
+:root {
+  --radius: 0.625rem;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #a1a1a1;
+  --sidebar: #fafafa;
+  --sidebar-foreground: #0a0a0a;
+  --sidebar-primary: #171717;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #171717;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #a1a1a1;
+}
+
+.dark {
+  --wp--preset--color--background: #0a0a0a;
+  --wp--preset--color--foreground: #fafafa;
+  --wp--preset--color--card: #171717;
+  --wp--preset--color--card-foreground: #fafafa;
+  --wp--preset--color--popover: #262626;
+  --wp--preset--color--popover-foreground: #fafafa;
+  --wp--preset--color--primary: #e5e5e5;
+  --wp--preset--color--primary-foreground: #171717;
+  --wp--preset--color--secondary: #262626;
+  --wp--preset--color--secondary-foreground: #fafafa;
+  --wp--preset--color--muted: #262626;
+  --wp--preset--color--muted-foreground: #a1a1a1;
+  --wp--preset--color--accent: #404040;
+  --wp--preset--color--accent-foreground: #fafafa;
+  --wp--preset--color--destructive: #ff6467;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: rgb(115, 115, 115);
+  --sidebar: #171717;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #1447e6;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #525252;
+}
+
+/* Editor wrapper */
+.editor-styles-wrapper {
+  background-color: var(--wp--preset--color--background);
+  color: var(--wp--preset--color--foreground);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  line-height: 1.5;
+}
+
+/* Button variants */
+.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link {
+  background-color: transparent;
+  color: var(--wp--preset--color--primary);
+  border: 1px solid var(--border);
+}
+
+.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:hover {
+  background-color: var(--wp--preset--color--accent);
+  color: var(--wp--preset--color--accent-foreground);
+}
+
+.editor-styles-wrapper .wp-block-button.is-style-secondary .wp-block-button__link {
+  background-color: var(--wp--preset--color--secondary);
+  color: var(--wp--preset--color--secondary-foreground);
+}
+
+.editor-styles-wrapper .wp-block-button.is-style-secondary .wp-block-button__link:hover {
+  background-color: color-mix(in oklab,var(--wp--preset--color--secondary)80%,transparent);
+}
+
+.editor-styles-wrapper .wp-block-button.is-style-destructive .wp-block-button__link {
+  background-color: var(--wp--preset--color--destructive);
+  color: var(--wp--preset--color--destructive-foreground);
+}
+
+.editor-styles-wrapper .wp-block-button.is-style-destructive .wp-block-button__link:hover {
+  background-color: color-mix(in oklab,var(--wp--preset--color--destructive)90%,transparent);
+}
+
+.editor-styles-wrapper .wp-block-button.is-style-ghost .wp-block-button__link {
+  background-color: transparent;
+  color: var(--wp--preset--color--primary);
+}
+
+.editor-styles-wrapper .wp-block-button.is-style-ghost .wp-block-button__link:hover {
+  background-color: var(--wp--preset--color--accent);
+  color: var(--wp--preset--color--accent-foreground);
+}
