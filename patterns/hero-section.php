@@ -2,7 +2,7 @@
 /**
  * Title: Hero Section
  * Slug: shadcn/hero-section
- * Categories: shadcn
+ * Categories: shadcn, shadcn-banner
  * Description: A hero section with title, description, and call-to-action buttons.
  */
 
@@ -21,8 +21,8 @@
 <div class="wp-block-button is-style-fill"><a class="wp-block-button__link wp-element-button">Get Started</a></div>
 <!-- /wp:button -->
 
-<!-- wp:button {"className":"is-style-secondary"} -->
-<div class="wp-block-button is-style-secondary"><a class="wp-block-button__link wp-element-button">Learn More</a></div>
+<!-- wp:button {"className":"is-style-ghost"} -->
+<div class="wp-block-button is-style-ghost"><a class="wp-block-button__link wp-element-button">Learn More</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->

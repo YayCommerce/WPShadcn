@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="WordPress" namespace="WordPressCS\WordPress" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+
+	<description>WordPress Coding Standards</description>
+	<config name="testVersion" value="7.2-"/>
+	<config name="minimum_supported_wp_version" value="5.2"/>
+	<rule ref="PHPCompatibilityWP"/>
+	<rule ref="WordPress-Docs"/>
+	<rule ref="WordPress-Extra">
+		<!-- Prevent duplicate messages + deprecation notice from deprecated sniff. -->
+		<exclude name="Squiz.Commenting"/>
+		<exclude name="Squiz.PHP.CommentedOutCode"/>
+
+		<exclude name="WordPress.WP.TimezoneChange.DeprecatedSniff"/>
+		<exclude name="WordPress.WhiteSpace.PrecisionAlignment.Found"/>
+		<exclude name="WordPress.WP.TimezoneChange.timezone_change_date_default_timezone_set"/>
+		<exclude name="WordPress.NamingConventions"/>
+		<exclude name="WordPress.PHP.StrictComparisons"/>
+		<exclude name="WordPress.Files"/>
+		<exclude name="WordPress.WP.I18n.MissingTranslatorsComment"/>
+	</rule>
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="shadcn"/>
+			</property>
+		</properties>
+	</rule>
+
+	<exclude-pattern>/vendor/</exclude-pattern>
+	<exclude-pattern>/node_modules/</exclude-pattern>
+	<exclude-pattern>/assets/</exclude-pattern>
+	<exclude-pattern>*.min.js</exclude-pattern>
+	<exclude-pattern>*.js</exclude-pattern>
+	<exclude-pattern>*.css</exclude-pattern>
+</ruleset>

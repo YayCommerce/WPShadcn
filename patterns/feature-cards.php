@@ -2,7 +2,7 @@
 /**
  * Title: Feature Cards
  * Slug: shadcn/feature-cards
- * Categories: shadcn-cards
+ * Categories: shadcn
  * Description: A grid of feature cards showcasing key benefits or services.
  */
 

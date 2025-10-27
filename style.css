@@ -31,6 +31,9 @@ Tags: full-site-editing, custom-colors, custom-logo, custom-menu, editor-style, 
   --sidebar-accent-foreground: #171717;
   --sidebar-border: #e5e5e5;
   --sidebar-ring: #a1a1a1;
+
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --default-transition-duration: 0.15s;
 }
 
 .dark {
@@ -79,7 +82,9 @@ body {
    ========================================================================== */
 
 .wp-block-button__link {
-  transition: all 0.2s ease-in-out;
+  transition-property: all;
+  transition-timing-function: var(--default-transition-timing-function);
+  transition-duration: var(--default-transition-duration);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -105,7 +110,11 @@ body {
 }
 
 .wp-block-button.is-style-secondary .wp-block-button__link:hover {
-  background-color: color-mix(in oklab, var(--wp--preset--color--secondary)80%, transparent);
+  background-color: color-mix(
+    in oklab,
+    var(--wp--preset--color--secondary) 80%,
+    transparent
+  );
 }
 
 .wp-block-button.is-style-destructive .wp-block-button__link {
@@ -114,7 +123,11 @@ body {
 }
 
 .wp-block-button.is-style-destructive .wp-block-button__link:hover {
-  background-color: color-mix(in oklab, var(--wp--preset--color--destructive)90%, transparent);
+  background-color: color-mix(
+    in oklab,
+    var(--wp--preset--color--destructive) 90%,
+    transparent
+  );
 }
 
 .wp-block-button.is-style-ghost .wp-block-button__link {
@@ -147,7 +160,9 @@ select {
   border-radius: calc(var(--radius) - 2px);
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
-  transition: border-color 0.2s ease-in-out;
+  transition-property: border-color;
+  transition-timing-function: var(--default-transition-timing-function);
+  transition-duration: var(--default-transition-duration);
 }
 
 .wp-block-search__input:focus,
@@ -156,7 +171,7 @@ textarea:focus,
 select:focus {
   outline: none;
   border-color: var(--ring);
-  box-shadow: 0 0 0 2px color-mix(in oklab, var(--ring)20%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--ring) 20%, transparent);
 }
 
 input[type="checkbox"],
@@ -186,7 +201,7 @@ input[type="radio"]:checked {
 
 input[type="checkbox"]:checked::after,
 input[type="radio"]:checked::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 5px;
   top: 1.5px;
@@ -216,7 +231,7 @@ input[type="radio"]:focus-visible {
 .dark select,
 .dark input[type="checkbox"],
 .dark input[type="radio"] {
-  background-color: color-mix(in oklab, var(--input)30%, transparent);
+  background-color: color-mix(in oklab, var(--input) 30%, transparent);
 }
 
 .dark input[type="checkbox"]:checked,
@@ -238,7 +253,9 @@ input[type="radio"]:focus-visible {
   align-items: center;
   justify-content: center;
   border-radius: calc(var(--radius) - 2px);
-  transition: background-color 0.2s ease-in-out;
+  transition-property: background-color;
+  transition-timing-function: var(--default-transition-timing-function);
+  transition-duration: var(--default-transition-duration);
 }
 
 .dark-mode-toggle:hover {

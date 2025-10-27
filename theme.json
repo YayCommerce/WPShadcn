@@ -510,7 +510,7 @@
 				},
 				"variations": {
 					"pill": {
-						"css": "& {gap: 2px;} & a {transition: color, background 0.2s ease-in-out;}",
+						"css": "& {gap: 2px;} & a {transition-property: color, background; transition-timing-function: var(--default-transition-timing-function); transition-duration: var(--default-transition-duration);}",
 						"elements": {
 							"link": {
 								"color": {
@@ -681,7 +681,7 @@
 				}
 			},
 			"link": {
-				"css": "& {transition:color 0.2s ease-in-out;} &:hover {text-underline-offset:4px;text-decoration-thickness:1px;}",
+				"css": "& {transition-property: color; transition-timing-function: var(--default-transition-timing-function); transition-duration: var(--default-transition-duration);} &:hover {text-underline-offset:4px;text-decoration-thickness:1px;}",
 				"color": {
 					"text": "var:preset|color|primary"
 				},
