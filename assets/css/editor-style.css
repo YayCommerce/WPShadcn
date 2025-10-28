@@ -6,17 +6,17 @@
 /* Import the same CSS variables as the frontend */
 :root {
   --radius: 0.625rem;
-  --border: #e5e5e5;
-  --input: #e5e5e5;
-  --ring: #a1a1a1;
-  --sidebar: #fafafa;
-  --sidebar-foreground: #0a0a0a;
-  --sidebar-primary: #171717;
-  --sidebar-primary-foreground: #fafafa;
-  --sidebar-accent: #f5f5f5;
-  --sidebar-accent-foreground: #171717;
-  --sidebar-border: #e5e5e5;
-  --sidebar-ring: #a1a1a1;
+  --wp--preset--color--border: #e5e5e5;
+  --wp--preset--color--input: #e5e5e5;
+  --wp--preset--color--ring: #a1a1a1;
+  --wp--preset--color--sidebar: #fafafa;
+  --wp--preset--color--sidebar-foreground: #0a0a0a;
+  --wp--preset--color--sidebar-primary: #171717;
+  --wp--preset--color--sidebar-primary-foreground: #fafafa;
+  --wp--preset--color--sidebar-accent: #f5f5f5;
+  --wp--preset--color--sidebar-accent-foreground: #171717;
+  --wp--preset--color--sidebar-border: #e5e5e5;
+  --wp--preset--color--sidebar-ring: #a1a1a1;
 }
 
 .dark {
@@ -35,24 +35,22 @@
   --wp--preset--color--accent: #404040;
   --wp--preset--color--accent-foreground: #fafafa;
   --wp--preset--color--destructive: #ff6467;
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.15);
-  --ring: rgb(115, 115, 115);
-  --sidebar: #171717;
-  --sidebar-foreground: #fafafa;
-  --sidebar-primary: #1447e6;
-  --sidebar-primary-foreground: #fafafa;
-  --sidebar-accent: #262626;
-  --sidebar-accent-foreground: #fafafa;
-  --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: #525252;
+  --wp--preset--color--border: rgba(255, 255, 255, 0.1);
+  --wp--preset--color--input: rgba(255, 255, 255, 0.15);
+  --wp--preset--color--ring: rgb(115, 115, 115);
+  --wp--preset--color--sidebar: #171717;
+  --wp--preset--color--sidebar-foreground: #fafafa;
+  --wp--preset--color--sidebar-primary: #1447e6;
+  --wp--preset--color--sidebar-primary-foreground: #fafafa;
+  --wp--preset--color--sidebar-accent: #262626;
+  --wp--preset--color--sidebar-accent-foreground: #fafafa;
+  --wp--preset--color--sidebar-border: rgba(255, 255, 255, 0.1);
+  --wp--preset--color--sidebar-ring: #525252;
 }
 
 /* Editor wrapper */
 .editor-styles-wrapper {
-  background-color: var(--wp--preset--color--background);
-  color: var(--wp--preset--color--foreground);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-family: Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   line-height: 1.5;
 }
 
@@ -60,7 +58,7 @@
 .editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link {
   background-color: transparent;
   color: var(--wp--preset--color--primary);
-  border: 1px solid var(--border);
+  border: 1px solid var(--wp--preset--color--border);
 }
 
 .editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:hover {

@@ -12,8 +12,8 @@
 <h1 class="wp-block-heading has-text-align-center has-5-xl-font-size" style="font-style:normal;font-weight:700;line-height:1.1">Welcome to Our Website</h1>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"var:preset|font-size|lg","lineHeight":"1.6"},"elements":{"link":{"color":{"text":"var:preset|color|muted-foreground"}}}},"textColor":"muted-foreground"} -->
-<p class="has-text-align-center has-muted-foreground-color has-text-color has-link-color" style="font-size:var(--wp--preset--font-size--lg);line-height:1.6">Discover amazing content and connect with our community. We're here to help you succeed with modern, accessible design.</p>
+<!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"var:preset|font-size|lg","lineHeight":"1.6"}}} -->
+<p class="has-text-align-center" style="font-size:var(--wp--preset--font-size--lg);line-height:1.6">Discover amazing content and connect with our community. We're here to help you succeed with modern, accessible design.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"style":{"spacing":{"blockGap":"var:preset|spacing|4"}},"layout":{"type":"flex","justifyContent":"center"}} -->

@@ -48,6 +48,10 @@ class DarkMode {
 	 * Add dark mode class to html element
 	 */
 	public function html_classes( $attributes ) {
+		if ( is_admin() ) {
+			return $attributes;
+		}
+
 		if ( isset( $_COOKIE['shadcn-theme-mode'] ) && 'dark' === $_COOKIE['shadcn-theme-mode'] ) {
 			$attributes .= ' class="dark" style="color-scheme: dark;"';
 		}

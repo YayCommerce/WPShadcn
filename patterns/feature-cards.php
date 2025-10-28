@@ -12,8 +12,8 @@
 <h2 class="wp-block-heading has-text-align-center has-4-xl-font-size" style="font-style:normal;font-weight:700;line-height:1.1">Why Choose Us</h2>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"var:preset|font-size|lg"},"color":{"text":"var:preset|color|muted-foreground"}}} -->
-<p class="has-text-align-center has-text-color" style="color:var(--wp--preset--color--muted-foreground);font-size:var(--wp--preset--font-size--lg)">Discover the features that make us stand out from the competition.</p>
+<!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"var:preset|font-size|lg"}}} -->
+<p class="has-text-align-center" style="font-size:var(--wp--preset--font-size--lg)">Discover the features that make us stand out from the competition.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"layout":{"type":"grid"}} -->

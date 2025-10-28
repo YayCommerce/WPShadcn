@@ -14,6 +14,7 @@ class Core {
 		add_action( 'after_setup_theme', array( $this, 'create_demo_navigation' ), 20 );
 
 		require_once __DIR__ . '/Core/Blocks.php';
+		require_once __DIR__ . '/Core/Patterns.php';
 	}
 
 	public function setup_theme() {
@@ -33,6 +34,10 @@ class Core {
 				'script',
 			)
 		);
+		// Add theme support
+		add_theme_support( 'wp-block-styles' );
+		add_theme_support( 'automatic-feed-links' );
+		add_theme_support( 'responsive-embeds' );
 	}
 
 	public function setup_editor_styles() {
