@@ -248,7 +248,7 @@ input[type="radio"]:focus-visible {
   border: none;
   color: var(--wp--preset--color--foreground);
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
