@@ -11,7 +11,6 @@ class Core {
 		add_action( 'after_setup_theme', array( $this, 'setup_theme' ) );
 		add_action( 'after_setup_theme', array( $this, 'setup_editor_styles' ) );
 		add_action( 'after_setup_theme', array( $this, 'starter_content_setup' ) );
-		add_action( 'after_setup_theme', array( $this, 'create_demo_navigation' ), 20 );
 
 		require_once __DIR__ . '/Core/Blocks.php';
 		require_once __DIR__ . '/Core/Patterns.php';
@@ -108,50 +107,6 @@ class Core {
 				),
 			)
 		);
-	}
-
-	 /**
-	* Create demo navigation post for footer
-	*/
-	public function create_demo_navigation() {
-		// Check if navigation post already exists
-		$existing_nav = get_posts(
-			array(
-				'post_type'      => 'wp_navigation',
-				'title'          => 'Dummy Navigation',
-				'posts_per_page' => 1,
-			)
-		);
-
-		$dummy_content = '
-	   <!-- wp:navigation-link {"label":"Shop","url":"#","kind":"custom"} /-->
-	   <!-- wp:navigation-link {"label":"Blog","url":"#","kind":"custom"} /-->
-	   <!-- wp:navigation-link {"label":"About","url":"#","kind":"custom"} /-->';
-
-		if ( ! empty( $existing_nav ) ) {
-			//Update the navigation post
-			wp_update_post(
-				array(
-					'ID'           => $existing_nav[0]->ID,
-					'post_content' => $dummy_content,
-				)
-			);
-			return;
-		}
-
-		// Create the navigation post
-		$nav_post_id = wp_insert_post(
-			array(
-				'post_type'    => 'wp_navigation',
-				'post_title'   => 'Dummy Navigation',
-				'post_content' => $dummy_content,
-				'post_status'  => 'publish',
-			)
-		);
-
-		if ( ! is_wp_error( $nav_post_id ) ) {
-			error_log( 'Footer navigation post created with ID: ' . $nav_post_id );
-		}
 	}
 }
 
