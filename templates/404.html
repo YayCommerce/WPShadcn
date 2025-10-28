@@ -1,19 +1,28 @@
-<!-- wp:template-part {"slug":"header"} /-->
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"layout":{"type":"default"}} -->
-<main class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)">
-	<!-- wp:heading {"level":1,"style":{"typography":{"fontSize":"var:preset|font-size|4-xl","fontWeight":"700","lineHeight":"1.1"},"spacing":{"margin":{"bottom":"var:preset|spacing|2"}}}} -->
-	<h1 class="wp-block-heading" style="margin-bottom:var(--wp--preset--spacing--2);font-size:var(--wp--preset--font-size--4xl);font-weight:700;line-height:1.1">404</h1>
+<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"right":"0","left":"0"},"margin":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10"}}},"layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide"
+	style="margin-top:var(--wp--preset--spacing--10);margin-bottom:var(--wp--preset--spacing--10);padding-right:0;padding-left:0">
+	<!-- wp:heading {"textAlign":"center","level":1,"align":"wide"} -->
+	<h1 class="wp-block-heading alignwide has-text-align-center">404</h1>
 	<!-- /wp:heading -->
 
-	<!-- wp:paragraph {"style":{"typography":{"fontSize":"var:preset|font-size|lg"},"spacing":{"margin":{"bottom":"var:preset|spacing|4"}}}} -->
-	<p class="wp-block-paragraph" style="margin-bottom:var(--wp--preset--spacing--4);font-size:var(--wp--preset--font-size--lg)">The page you are looking for does not exist.</p>
+	<!-- wp:heading {"textAlign":"center","align":"wide"} -->
+	<h2 class="wp-block-heading alignwide has-text-align-center">Oops! Page Not Found</h2>
+	<!-- /wp:heading -->
+
+	<!-- wp:paragraph {"align":"center"} -->
+	<p class="has-text-align-center">We apologize, but the page you requested could not be found. Please navigate back
+		to the home page to explore more.</p>
 	<!-- /wp:paragraph -->
 
-	<!-- wp:button {"style":{"typography":{"fontWeight":"500","fontStyle":"normal"},"elements":{"link":{"color":{"text":"var:preset|color|muted-foreground"},":hover":{"color":{"text":"var:preset|color|foreground"}}}}},"fontSize":"xs","textColor":"primary"} -->
-	<a class="wp-block-button" href="/" style="font-size:var(--wp--preset--font-size--xs);color:var(--wp--preset--color--primary);font-weight:500;font-style:normal"><span class="wp-block-button__link">Go to Home</span></a>
-	<!-- /wp:button -->
-</main>
+	<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+	<div class="wp-block-buttons"><!-- wp:button -->
+		<div class="wp-block-button"><a class="wp-block-button__link wp-element-button">Go to Homepage</a></div>
+		<!-- /wp:button -->
+	</div>
+	<!-- /wp:buttons -->
+</div>
 <!-- /wp:group -->
 
-<!-- wp:template-part {"slug":"footer"} /-->
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

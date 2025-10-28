@@ -296,6 +296,14 @@
       "lineHeight": "1.625"
     },
     "blocks": {
+      "core/site-title": {
+        "typography": {
+          "fontSize": "var:preset|font-size|base",
+          "fontWeight": "600",
+          "textDecoration": "none",
+          "fontStyle": "normal"
+        }
+      },
       "core/columns": {
         "spacing": {
           "blockGap": "var:preset|spacing|4"
@@ -457,6 +465,11 @@
       "core/comments": {
         "css": "& #commentform label {display:inline-block;margin-bottom:4px;}"
       },
+      "core/post-featured-image": {
+        "border": {
+          "radius": "calc(var(--radius) + 4px)"
+        }
+      },
       "woocommerce/customer-account": {
         "elements": {
           "link": {
@@ -497,7 +510,29 @@
       },
       "woocommerce/product-image": {
         "border": {
-          "radius": "calc(var(--radius) - 2px)"
+          "radius": "calc(var(--radius) + 4px)"
+        }
+      },
+      "woocommerce/product-sale-badge": {
+        "color": {
+          "background": "var:preset|color|foreground",
+          "text": "var:preset|color|background"
+        },
+        "border": {
+          "radius": "100px"
+        },
+        "typography": {
+          "fontSize": "var:preset|font-size|xs",
+          "fontWeight": "500",
+          "textTransform": "none"
+        },
+        "spacing": {
+          "padding": {
+            "top": "0",
+            "right": "8px",
+            "bottom": "0",
+            "left": "8px"
+          }
         }
       }
     },
