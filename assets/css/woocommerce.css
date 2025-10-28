@@ -1,3 +1,17 @@
-/* ================================
- * Native Select Component Styles
- * ================================ */
+/* ==========================================================================
+   WooCommerce Styles
+   ========================================================================== */
+
+.wc-block-components-drawer__screen-overlay {
+	background-color: color-mix(in oklab,#000 50%,transparent)
+}
+
+#coming-soon-footer-banner {
+	background-color: var(--wp--preset--color--card);
+	border-top-color: var(--wp--preset--color--border);
+}
+
+.wc-block-mini-cart__badge {
+	background-color: var(--wp--preset--color--foreground);
+	color: var(--wp--preset--color--background);
+}

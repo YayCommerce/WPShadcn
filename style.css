@@ -34,6 +34,17 @@ Tags: full-site-editing, custom-colors, custom-logo, custom-menu, editor-style, 
 
   --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   --default-transition-duration: 0.15s;
+
+  --text-xs--line-height: calc(1 / 0.75);
+  --text-sm--line-height: calc(1.25 / 0.875);
+  --text-base--line-height: calc(1.5 / 1);
+  --text-lg--line-height: calc(1.75 / 1.125);
+  --text-xl--line-height: calc(1.75 / 1.25);
+  --text-2xl--line-height: calc(2 / 1.5);
+  --text-3xl--line-height: calc(2.25 / 1.875);
+  --text-4xl--line-height: calc(2.5 / 2.25);
+  --text-5xl--line-height: 1;
+  --text-7xl--line-height: 1;
 }
 
 .dark {
@@ -379,6 +390,36 @@ input[type="radio"]:focus-visible {
    Accessibility
    ========================================================================== */
 
+.has-xs-font-size {
+  line-height: var(--text-xs--line-height);
+}
+.has-sm-font-size {
+  line-height: var(--text-sm--line-height);
+}
+.has-base-font-size {
+  line-height: var(--text-base--line-height);
+}
+.has-lg-font-size {
+  line-height: var(--text-lg--line-height);
+}
+.has-xl-font-size {
+  line-height: var(--text-xl--line-height);
+}
+.has-2-xl-font-size {
+  line-height: var(--text-2xl--line-height);
+}
+.has-3-xl-font-size {
+  line-height: var(--text-3xl--line-height);
+}
+.has-4-xl-font-size {
+  line-height: var(--text-4xl--line-height);
+}
+.has-5-xl-font-size {
+  line-height: var(--text-5xl--line-height);
+}
+.has-7-xl-font-size {
+  line-height: var(--text-7xl--line-height);
+}
 /* .required {
   color: var(--wp--preset--color--destructive);
 } */
