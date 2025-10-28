@@ -152,8 +152,7 @@ input[type="search"],
 input[type="url"],
 input[type="tel"],
 input[type="number"],
-textarea,
-select {
+textarea {
   background-color: transparent;
   color: var(--wp--preset--color--foreground);
   border: 1px solid var(--wp--preset--color--border);
@@ -165,13 +164,111 @@ select {
   transition-duration: var(--default-transition-duration);
 }
 
-.wp-block-search__input:focus,
-input:focus,
-textarea:focus,
-select:focus {
+/* ==========================================================================
+   Select Styles
+   ========================================================================== */
+select {
+  /* Layout & Sizing */
+  height: 2.25rem; /* 36px */
+  width: 100%;
+  min-width: 0;
+  padding: 0.5rem 2.25rem 0.5rem 0.75rem; /* py-2 px-3 pr-9 */
+
+  /* Appearance */
+  appearance: none;
+  border-radius: calc(var(--radius) - 2px);
+  border: 1px solid var(--wp--preset--color--input);
+  background-color: transparent;
+
+  /* Typography */
+  font-size: 0.875rem; /* text-sm */
+  font-family: inherit;
+  line-height: 1.5;
+
+  /* Colors */
+  color: var(--wp--preset--color--foreground);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='oklch(80.6% 0 0)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 0.75rem auto;
+
+  /* Effects */
+  box-shadow: 0 0.0625rem 0.125rem 0 rgb(0 0 0 / 0.05);
+  transition-property: color, box-shadow, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+
+  /* Reset */
+  outline: none;
+}
+
+/**
+ * Select Placeholder State
+ */
+select::placeholder {
+  color: var(--wp--preset--color--muted-foreground);
+}
+
+/**
+ * Select Selection/Highlight
+ */
+select::selection {
+  background-color: var(--wp--preset--color--primary);
+  color: var(--wp--preset--color--primary-foreground);
+}
+
+/**
+ * Select Disabled State
+ */
+select:disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.dark select {
+  background-color: color-mix(
+    in oklab,
+    var(--wp--preset--color--input) 30%,
+    transparent
+  );
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='oklch(100% 0 0/.15)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.dark select:hover:not(:disabled) {
+  background-color: color-mix(
+    in oklab,
+    var(--wp--preset--color--input) 50%,
+    transparent
+  );
+}
+
+/**
+ * Select Options Styling (for browsers that support it)
+ * Note: Limited styling support across browsers
+ */
+select option {
+  background-color: var(--wp--preset--color--background);
+  color: var(--wp--preset--color--foreground);
+  padding: 0.5rem;
+}
+
+select option:checked {
+  background: linear-gradient(
+    var(--wp--preset--color--primary),
+    var(--wp--preset--color--primary)
+  );
+  background-color: var(--wp--preset--color--primary);
+  color: var(--wp--preset--color--primary-foreground);
+}
+
+.wp-block-search__input:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
   outline: none;
   border-color: var(--wp--preset--color--ring);
-  box-shadow: 0 0 0 2px color-mix(in oklab, var(--wp--preset--color--ring) 20%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, oklch(70.8% 0 0) 50%, transparent);
 }
 
 input[type="checkbox"],
@@ -231,12 +328,23 @@ input[type="radio"]:focus-visible {
 .dark select,
 .dark input[type="checkbox"],
 .dark input[type="radio"] {
-  background-color: color-mix(in oklab, var(--wp--preset--color--input) 30%, transparent);
+  background-color: color-mix(
+    in oklab,
+    var(--wp--preset--color--input) 30%,
+    transparent
+  );
 }
 
 .dark input[type="checkbox"]:checked,
 .dark input[type="radio"]:checked {
   background-color: var(--wp--preset--color--primary);
+}
+
+.dark .wp-block-search__input:focus-visible,
+.dark input:focus-visible,
+.dark textarea:focus-visible,
+.dark select:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in oklab, oklch(55.6% 0 0) 50%, transparent);
 }
 
 /* ==========================================================================

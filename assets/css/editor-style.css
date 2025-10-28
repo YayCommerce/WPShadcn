@@ -17,35 +17,9 @@
   --wp--preset--color--sidebar-accent-foreground: #171717;
   --wp--preset--color--sidebar-border: #e5e5e5;
   --wp--preset--color--sidebar-ring: #a1a1a1;
-}
 
-.dark {
-  --wp--preset--color--background: #0a0a0a;
-  --wp--preset--color--foreground: #fafafa;
-  --wp--preset--color--card: #171717;
-  --wp--preset--color--card-foreground: #fafafa;
-  --wp--preset--color--popover: #262626;
-  --wp--preset--color--popover-foreground: #fafafa;
-  --wp--preset--color--primary: #e5e5e5;
-  --wp--preset--color--primary-foreground: #171717;
-  --wp--preset--color--secondary: #262626;
-  --wp--preset--color--secondary-foreground: #fafafa;
-  --wp--preset--color--muted: #262626;
-  --wp--preset--color--muted-foreground: #a1a1a1;
-  --wp--preset--color--accent: #404040;
-  --wp--preset--color--accent-foreground: #fafafa;
-  --wp--preset--color--destructive: #ff6467;
-  --wp--preset--color--border: rgba(255, 255, 255, 0.1);
-  --wp--preset--color--input: rgba(255, 255, 255, 0.15);
-  --wp--preset--color--ring: rgb(115, 115, 115);
-  --wp--preset--color--sidebar: #171717;
-  --wp--preset--color--sidebar-foreground: #fafafa;
-  --wp--preset--color--sidebar-primary: #1447e6;
-  --wp--preset--color--sidebar-primary-foreground: #fafafa;
-  --wp--preset--color--sidebar-accent: #262626;
-  --wp--preset--color--sidebar-accent-foreground: #fafafa;
-  --wp--preset--color--sidebar-border: rgba(255, 255, 255, 0.1);
-  --wp--preset--color--sidebar-ring: #525252;
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --default-transition-duration: 0.15s;
 }
 
 /* Editor wrapper */
