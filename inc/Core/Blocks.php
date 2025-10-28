@@ -8,8 +8,8 @@ class Blocks {
 	use SingletonTrait;
 
 	public function __construct() {
-		add_action( 'init', array( $this, 'register_block_styles' ) );
-		add_action( 'init', array( $this, 'register_pattern_category' ), 9 );
+		add_action( 'init', array( $this, 'register_block_styles' ), 1 );
+		add_action( 'init', array( $this, 'register_pattern_category' ), 1 );
 	}
 
 	/**
