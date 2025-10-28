@@ -580,6 +580,39 @@
       },
       "core/comments": {
         "css": "& #commentform label {display:inline-block;margin-bottom:4px;}"
+      },
+      "woocommerce/customer-account": {
+        "elements": {
+          "link": {
+            "css": " & a {transition-property: color, background; transition-timing-function: var(--default-transition-timing-function); transition-duration: var(--default-transition-duration);}",
+            "color": {
+              "background": "var:preset|color|background",
+              "text": "var:preset|color|foreground"
+            },
+            "border": {
+              "radius": "calc(var(--radius) - 2px)"
+            },
+            ":hover": {
+              "color": {
+                "background": "var:preset|color|accent",
+                "text": "var:preset|color|accent-foreground"
+              },
+              "typography": {
+                "textDecoration": "none"
+              }
+            }
+          }
+        }
+      },
+      "woocommerce/mini-cart": {
+        "css": "& {transition-property: color, background; transition-timing-function: var(--default-transition-timing-function); transition-duration: var(--default-transition-duration);} &:hover {background: var(--wp--preset--color--accent); color: var(--wp--preset--color--accent-foreground);}",
+        "color": {
+          "background": "var:preset|color|background",
+          "text": "var:preset|color|foreground"
+        },
+        "border": {
+          "radius": "calc(var(--radius) - 2px)"
+        }
       }
     },
     "elements": {
