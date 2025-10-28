@@ -1,0 +1,25 @@
+{
+  "version": 3,
+  "$schema": "https://schemas.wp.org/wp/6.7/theme.json",
+  "title": "Outline",
+  "slug": "outline",
+  "blockTypes": ["core/button"],
+  "styles": {
+    "border": {
+      "color": "var(--wp--preset--color--border)",
+      "width": "1px"
+    },
+    "color": {
+      "background": "transparent",
+      "text": "var:preset|color|foreground"
+    },
+    "spacing": {
+      "padding": {
+        "top": "var:preset|spacing|2",
+        "right": "var:preset|spacing|4",
+        "bottom": "var:preset|spacing|2",
+        "left": "var:preset|spacing|4"
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "$schema": "https://schemas.wp.org/wp/6.7/theme.json",
+  "title": "Ghost",
+  "slug": "ghost",
+  "blockTypes": ["core/button"],
+  "styles": {
+    "color": {
+      "background": "transparent",
+      "text": "var:preset|color|foreground"
+    }
+  }
+}

@@ -17,42 +17,6 @@ class Blocks {
 	 */
 	public function register_block_styles() {
 
-		$button_styles = array(
-			'outline'     => __( 'Outline', 'shadcn' ),
-			'secondary'   => __( 'Secondary', 'shadcn' ),
-			'destructive' => __( 'Destructive', 'shadcn' ),
-			'ghost'       => __( 'Ghost', 'shadcn' ),
-			'sm'          => __( 'Small', 'shadcn' ),
-			'lg'          => __( 'Large', 'shadcn' ),
-		);
-
-		foreach ( $button_styles as $style => $label ) {
-			register_block_style(
-				'core/button',
-				array(
-					'name'  => $style,
-					'label' => $label,
-				)
-			);
-		}
-
-		// Group block styles
-		register_block_style(
-			'core/group',
-			array(
-				'name'  => 'card',
-				'label' => __( 'Card', 'shadcn' ),
-			)
-		);
-
-		register_block_style(
-			'core/navigation',
-			array(
-				'name'  => 'pill',
-				'label' => __( 'Pill', 'shadcn' ),
-			)
-		);
-
 	}
 
 	public function register_pattern_category() {
