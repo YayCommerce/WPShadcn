@@ -1,0 +1,25 @@
+.wp-block-button.is-size-sm > * {
+  padding-inline: 0.75rem;
+  height: 2rem;
+  font-size: var(--wp--preset--font-size--sm);
+}
+
+.wp-block-button.is-size-md > * {
+  padding-inline: 1rem;
+  height: 2.25rem;
+  font-size: var(--wp--preset--font-size--base);
+}
+
+.wp-block-button.is-size-lg > * {
+  height: 2.5rem;
+  font-size: var(--wp--preset--font-size--lg);
+  padding-inline: 1.5rem;
+}
+
+.wp-block-button.is-size-lg > *,
+.wp-block-button.is-size-md > *,
+.wp-block-button.is-size-sm > * {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
