@@ -10,6 +10,7 @@ class Blocks {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register_block_styles' ), 1 );
 		add_action( 'init', array( $this, 'register_pattern_category' ), 1 );
+		add_action( 'init', array( $this, 'register_block_settings' ), 1 );
 	}
 
 	/**
@@ -30,13 +31,17 @@ class Blocks {
 			'shadcn-banner' => array( 'label' => __( 'Shadcn Banner', 'shadcn' ) ),
 		);
 
-		$block_pattern_categories = apply_filters( 'fse_handyman_block_pattern_categories', $block_pattern_categories );
+		$block_pattern_categories = apply_filters( 'shadcn_block_pattern_categories', $block_pattern_categories );
 
 		foreach ( $block_pattern_categories as $name => $properties ) {
 			if ( ! \WP_Block_Pattern_Categories_Registry::get_instance()->is_registered( $name ) ) {
 				register_block_pattern_category( $name, $properties ); // phpcs:ignore WPThemeReview.PluginTerritory.ForbiddenFunctions.editor_blocks_register_block_pattern_category
 			}
 		}
+	}
+
+	public function register_block_settings() {
+		require_once __DIR__ . '/../BlockSettings/BlockSettingsBootstrap.php';
 	}
 }
 

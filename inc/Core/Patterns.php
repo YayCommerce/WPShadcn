@@ -18,7 +18,7 @@ class Patterns {
 				'description' => 'A banner heading',
 				'categories'  => array( 'shadcn', 'shadcn-banner' ),
 				'content'     => '<!-- wp:heading {"textAlign":"center","level":1,"style":{"typography":{"fontWeight":"700","lineHeight":"1.1","fontStyle":"normal"}},"fontSize":"fluid-7xl"} -->
-				<h1 class="wp-block-heading has-text-align-center has-fluid-7-xl-font-size" style="font-style:normal;font-weight:700;line-height:1.1">Welcome to Our Website</h1>
+				<h1 class="wp-block-heading has-text-align-center has-fluid-7-xl-font-size" style="font-style:normal;font-weight:700;line-height:1.1">' . esc_html__( 'Welcome to Our Website', 'shadcn' ) . '</h1>
 				<!-- /wp:heading -->',
 			),
 		);
