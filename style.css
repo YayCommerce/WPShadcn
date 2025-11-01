@@ -452,10 +452,13 @@ input[type="radio"]:focus-visible {
     text-decoration: none;
   }
 
-  .wp-block-navigation.is-style-pill .wp-block-navigation-item__content,
-  .wp-block-navigation.is-style-pill .wp-block-navigation-item,
+  .wp-block-navigation.is-style-pill .wp-block-navigation-item.has-child,
   .wp-block-navigation.is-style-pill .wp-block-navigation-submenu__toggle {
     cursor: default;
+  }
+
+  .wp-block-navigation.is-style-pill .wp-block-navigation-item__content {
+    padding: var(--wp--preset--spacing--2) var(--wp--preset--spacing--4);
   }
 
   .wp-block-navigation.is-style-pill
@@ -470,7 +473,6 @@ input[type="radio"]:focus-visible {
     > .wp-block-navigation-item
     > .wp-block-navigation-item__content {
     color: var(--wp--preset--color--foreground);
-    padding: var(--wp--preset--spacing--2) var(--wp--preset--spacing--4);
     border-radius: calc(var(--radius) - 2px);
   }
 
