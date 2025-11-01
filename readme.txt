@@ -21,7 +21,6 @@ WP Shadcn is a modern, lightweight WordPress theme built with Shadcn UI componen
 * Clean and semantic HTML
 * Performance optimized
 * Built with Shadcn UI principles
-* Custom typography with Geist fonts
 * Customizable color palette
 * Full-width and centered layout options
 * Footer and header customization
@@ -61,7 +60,6 @@ A: When creating or editing pages/posts, look for the "Patterns" section in the 
 * Modern block-based theme architecture
 * Dark mode support
 * Responsive design
-* Custom typography with Geist fonts
 * Block patterns for quick content creation
 
 == Support ==
@@ -71,7 +69,6 @@ For support, questions, or to report bugs, please contact the theme author or vi
 == Credits ==
 
 * Built with Shadcn UI principles
-* Uses Geist font family
 * Block-based architecture inspired by modern WordPress theme development
 
 == License ==

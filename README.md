@@ -19,7 +19,6 @@ WP Shadcn is designed for developers and content creators who value clean code a
 - 💻 **Clean & Semantic HTML** - Follows WordPress best practices
 - ⚡ **Performance Optimized** - Lightweight and fast-loading
 - 🎨 **Built with Shadcn UI** - Component design principles for consistency
-- 🔤 **Custom Typography** - Geist font family included
 - 🎨 **Customizable Color Palette** - Easily adjust theme colors
 - 📐 **Layout Options** - Full-width and centered layout modes
 - 🔧 **Header & Footer Customization** - Full control over your site structure
@@ -86,7 +85,7 @@ WP Shadcn is designed for developers and content creators who value clean code a
 shadcn/
 ├── assets/
 │   ├── css/              # Stylesheets
-│   ├── fonts/            # Geist font files
+│   ├── fonts/            # Font files
 │   └── js/               # JavaScript files
 ├── parts/                # Reusable template parts
 ├── patterns/             # Block patterns
@@ -104,13 +103,11 @@ shadcn/
 - ✅ Modern block-based theme architecture
 - ✅ Dark mode support
 - ✅ Responsive design
-- ✅ Custom typography with Geist fonts
 - ✅ Block patterns for quick content creation
 
 ## 🎓 Built With
 
 - **[Shadcn UI](https://shadcn.com/)** - Component design principles
-- **[Geist Font](https://vercel.com/font)** - Modern typeface family
 - **WordPress Block Editor** - Modern theme development
 
 ## 📄 License
@@ -122,7 +119,6 @@ See [LICENSE](https://www.gnu.org/licenses/gpl-2.0.html) for more details.
 ## 👤 Credits
 
 - Built with Shadcn UI principles
-- Uses Geist font family
 - Block-based architecture inspired by modern WordPress theme development
 
 ## 📞 Support
