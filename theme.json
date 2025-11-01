@@ -19,7 +19,7 @@
           "slug": "foreground"
         },
         {
-          "color": "#fcfcfc",
+          "color": "#feffff",
           "name": "Card",
           "slug": "card"
         },
@@ -69,7 +69,7 @@
           "slug": "muted-foreground"
         },
         {
-          "color": "#eeeeee",
+          "color": "#f5f5f5",
           "name": "Accent",
           "slug": "accent"
         },
@@ -251,27 +251,9 @@
       ],
       "fontFamilies": [
         {
-          "name": "Inter",
-          "slug": "inter",
-          "fontFamily": "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
-        },
-        {
-          "name": "JetBrains Mono",
-          "slug": "jetbrains-mono",
-          "fontFamily": "\"JetBrains Mono\", ui-monospace, SFMono-Regular, \"SF Mono\", Consolas, \"Liberation Mono\", Menlo, monospace"
-        },
-        {
-          "name": "Geist",
-          "slug": "geist",
-          "fontFamily": "Geist, sans-serif",
-          "fontFace": [
-            {
-              "src": ["file:./assets/fonts/geist/Geist[wght].ttf"],
-              "fontWeight": "100 900",
-              "fontStyle": "normal",
-              "fontFamily": "Geist"
-            }
-          ]
+          "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+          "slug": "system-fonts",
+          "name": "System fonts"
         }
       ]
     },
@@ -290,12 +272,21 @@
       }
     },
     "typography": {
-      "fontFamily": "var:preset|font-family|geist",
+      "fontFamily": "var:preset|font-family|system-fonts",
       "fontSize": "var:preset|font-size|base",
       "fontWeight": "400",
       "lineHeight": "1.625"
     },
     "blocks": {
+      "core/post-content": {
+        "elements": {
+          "link": {
+            "typography": {
+              "textDecoration": "underline"
+            }
+          }
+        }
+      },
       "core/site-title": {
         "typography": {
           "fontSize": "var:preset|font-size|base",
@@ -315,10 +306,6 @@
         }
       },
       "core/code": {
-        "typography": {
-          "fontFamily": "var:preset|font-family|jetbrains-mono",
-          "fontSize": "var:preset|font-size|sm"
-        },
         "color": {
           "background": "var:preset|color|muted",
           "text": "var:preset|color|muted-foreground"
@@ -559,14 +546,14 @@
         },
         "spacing": {
           "padding": {
-            "top": "0.3rem",
-            "right": "0.75rem",
-            "bottom": "0.3rem",
-            "left": "0.75rem"
+            "top": "5px",
+            "right": "1rem",
+            "bottom": "5px",
+            "left": "1rem"
           }
         },
         "typography": {
-          "fontSize": "var:preset|font-size|sm",
+          "fontSize": "var:preset|font-size|base",
           "fontWeight": "500"
         },
         "border": {
@@ -635,19 +622,16 @@
         }
       },
       "link": {
-        "css": "& {transition-property: color; transition-timing-function: var(--default-transition-timing-function); transition-duration: var(--default-transition-duration);} &:hover {text-underline-offset:4px;text-decoration-thickness:1px;}",
+        "css": "& {transition-property: color; transition-timing-function: var(--default-transition-timing-function); transition-duration: var(--default-transition-duration);} & {text-underline-offset:4px;text-decoration-thickness:1px;} &:hover {text-decoration: underline;}",
         "color": {
           "text": "var:preset|color|primary"
-        },
-        "typography": {
-          "textDecoration": "none"
         },
         ":hover": {
           "color": {
             "text": "color-mix(in oklab, var(--wp--preset--color--primary)80%, transparent)"
           },
           "typography": {
-            "textDecoration": "underline"
+            "textDecoration": "none"
           }
         }
       }

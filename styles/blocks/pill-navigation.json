@@ -4,35 +4,5 @@
   "title": "Pill",
   "slug": "pill",
   "blockTypes": ["core/navigation"],
-  "styles": {
-    "css": "& {gap: 2px;} & a {transition-property: color, background; transition-timing-function: var(--default-transition-timing-function); transition-duration: var(--default-transition-duration);}",
-    "elements": {
-      "link": {
-        "color": {
-          "background": "var:preset|color|background",
-          "text": "var:preset|color|foreground"
-        },
-        "spacing": {
-          "padding": {
-            "top": "0.3rem",
-            "right": "var:preset|spacing|3",
-            "bottom": "0.3rem",
-            "left": "var:preset|spacing|3"
-          }
-        },
-        "border": {
-          "radius": "calc(var(--radius) - 2px)"
-        },
-        ":hover": {
-          "color": {
-            "background": "var:preset|color|accent",
-            "text": "var:preset|color|accent-foreground"
-          },
-          "typography": {
-            "textDecoration": "none"
-          }
-        }
-      }
-    }
-  }
+  "styles": {}
 }
