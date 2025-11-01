@@ -108,7 +108,7 @@ shadcn/
 ### Version 1.0.1
 - ✅ Some small issues
 
-### Version 1.0.1
+### Version 1.0.2
 - ✅ Update Navigation style
 - ✅ Update layout
 
