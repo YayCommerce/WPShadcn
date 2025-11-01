@@ -62,6 +62,13 @@ A: When creating or editing pages/posts, look for the "Patterns" section in the 
 * Responsive design
 * Block patterns for quick content creation
 
+= 1.0.1 =
+* Fixed: Some small issues
+
+= 1.0.2 =
+* Update Navigation style
+* Update layout
+
 == Support ==
 
 For support, questions, or to report bugs, please contact the theme author or visit the theme repository.

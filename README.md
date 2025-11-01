@@ -105,6 +105,13 @@ shadcn/
 - ✅ Responsive design
 - ✅ Block patterns for quick content creation
 
+### Version 1.0.1
+- ✅ Some small issues
+
+### Version 1.0.1
+- ✅ Update Navigation style
+- ✅ Update layout
+
 ## 🎓 Built With
 
 - **[Shadcn UI](https://shadcn.com/)** - Component design principles

@@ -39,11 +39,11 @@ class Caller implements BlockSettingsInterface {
 	}
 
 	public function enqueue_settings_scripts() {
-		wp_enqueue_script( 'shadcn/button-size', get_template_directory_uri() . '/inc/BlockSettings/ButtonSize/script.js', array( 'wp-edit-post' ), '1.0.0', true );
+		wp_enqueue_script( 'shadcn/button-size', get_template_directory_uri() . '/inc/BlockSettings/ButtonSize/script.js', array( 'wp-edit-post' ), wp_get_theme()->get( 'Version' ), true );
 	}
 
 	public function enqueue_frontend_scripts() {
-		wp_enqueue_style( 'shadcn/button-size', get_template_directory_uri() . '/inc/BlockSettings/ButtonSize/style.css', array(), '1.0.0' );
+		wp_enqueue_style( 'shadcn/button-size', get_template_directory_uri() . '/inc/BlockSettings/ButtonSize/style.css', array(), wp_get_theme()->get( 'Version' ) );
 	}
 
 }

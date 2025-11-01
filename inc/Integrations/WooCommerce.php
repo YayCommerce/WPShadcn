@@ -17,7 +17,7 @@ class WooCommerce {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'shadcn-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce.css', array(), '1.0.0' );
+		wp_enqueue_style( 'shadcn-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce.css', array(), wp_get_theme()->get( 'Version' ) );
 	}
 }
 
