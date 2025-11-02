@@ -87,6 +87,16 @@
           "color": "#fafafa",
           "name": "Destructive Foreground",
           "slug": "destructive-foreground"
+        },
+        {
+          "color": "#f8f8f9",
+          "name": "Code",
+          "slug": "code"
+        },
+        {
+          "color": "#0a0a0d",
+          "name": "Code Foreground",
+          "slug": "code-foreground"
         }
       ]
     },

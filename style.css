@@ -7,7 +7,7 @@ Description: A modern WordPress FSE theme inspired by Shadcn UI design system wi
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 5.3
-Version: 1.0.2
+Version: 1.0.2.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: shadcn
@@ -74,6 +74,8 @@ Tags: full-site-editing, custom-colors, custom-logo, custom-menu, editor-style, 
   --wp--preset--color--sidebar-accent-foreground: #fafafa;
   --wp--preset--color--sidebar-border: rgba(255, 255, 255, 0.1);
   --wp--preset--color--sidebar-ring: #525252;
+  --wp--preset--color--code: #161616;
+  --wp--preset--color--code-foreground: #a1a1a2;
 }
 
 /* ==========================================================================
