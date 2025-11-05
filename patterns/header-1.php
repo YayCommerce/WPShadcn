@@ -6,6 +6,8 @@
  * Description: A header with logo, title, tagline, dark mode toggle, navigation, and customer account and mini cart.
  */
 
+$darkmode_image_url = get_template_directory_uri() . '/assets/images/dark-mode.png';
+
 ?>
 
 <!-- wp:group {"layout":{"type":"constrained"}} -->
@@ -31,7 +33,7 @@
 		<div class="wp-block-group">
 			<!-- wp:image {"id":12,"width":"20px","sizeSlug":"full","linkDestination":"none","className":"dark-mode-toggle","style":{"color":{"duotone":["rgb(0, 0, 0)","rgb(255, 255, 255)"]}}} -->
 			<figure class="wp-block-image size-full is-resized dark-mode-toggle"><img
-					src="https://images.wpbrandy.com/uploads/dark-mode.png" alt="" class="wp-image-12"
+					src="<?php echo esc_url( $darkmode_image_url ); ?>" alt="" class="wp-image-12"
 					style="width:20px" /></figure>
 			<!-- /wp:image -->
 
