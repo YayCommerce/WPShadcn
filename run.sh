@@ -2,7 +2,7 @@
 set -eo pipefail
 
 function dev-init {
-	composer install
+	composer install && cd tools && composer install
 }
 
 function dev {
