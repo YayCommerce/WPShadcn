@@ -153,7 +153,7 @@ class Caller {
 		return array(
 			'svg'      => array(
 				'xmlns'       => true,
-				'viewBox'     => true,
+				'viewbox'     => true,
 				'width'       => true,
 				'height'      => true,
 				'fill'        => true,
