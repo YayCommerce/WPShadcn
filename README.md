@@ -98,20 +98,6 @@ shadcn/
 
 ## 🔄 Changelog
 
-### Version 1.0.0
-- ✅ Initial release
-- ✅ Modern block-based theme architecture
-- ✅ Dark mode support
-- ✅ Responsive design
-- ✅ Block patterns for quick content creation
-
-### Version 1.0.1
-- ✅ Some small issues
-
-### Version 1.0.2
-- ✅ Update Navigation style
-- ✅ Update layout
-
 ### Version 1.0.4
 - ✅ Added: Support WooCommerce Cart/Checkout template
 - ✅ Added: WooCommerce Checkout header
@@ -122,6 +108,20 @@ shadcn/
 - ✅ Updated: Navigation styles
 - ✅ Updated: Integrate with WooCommerce 10.4
 - ✅ Fixed: Header menu issue
+
+### Version 1.0.2
+- ✅ Update Navigation style
+- ✅ Update layout
+
+### Version 1.0.1
+- ✅ Some small issues
+
+### Version 1.0.0
+- ✅ Initial release
+- ✅ Modern block-based theme architecture
+- ✅ Dark mode support
+- ✅ Responsive design
+- ✅ Block patterns for quick content creation
 
 ## 🎓 Built With
 
