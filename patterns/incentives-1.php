@@ -8,8 +8,8 @@
 
 ?>
 
-<!-- wp:group {"metadata":{"categories":["shadcn"],"patternName":"shadcn/incentives-1","name":"Incentives 1"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|4","right":"var:preset|spacing|4"}},"color":{"background":"var:preset|color|background","text":"var:preset|color|foreground"}},"layout":{"type":"default"}} -->
-<div class="wp-block-group alignfull has-text-color has-background" style="color:var(--wp--preset--color--foreground);background-color:var(--wp--preset--color--background);padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--4);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--4)"><!-- wp:group {"metadata":{"name":"Header"},"layout":{"type":"constrained","contentSize":"576px"}} -->
+<!-- wp:group {"metadata":{"categories":["shadcn"],"patternName":"shadcn/incentives-1","name":"Incentives 1"},"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|4","right":"var:preset|spacing|4"}},"color":{"background":"var:preset|color|background","text":"var:preset|color|foreground"}},"layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide has-text-color has-background" style="color:var(--wp--preset--color--foreground);background-color:var(--wp--preset--color--background);padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--4);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--4)"><!-- wp:group {"metadata":{"name":"Header"},"layout":{"type":"constrained","contentSize":"576px"}} -->
 <div class="wp-block-group"><!-- wp:heading {"textAlign":"center","metadata":{"name":"Title"},"style":{"elements":{"link":{"color":{"text":"var:preset|color|foreground"}}}},"textColor":"foreground"} -->
 <h2 class="wp-block-heading has-text-align-center has-foreground-color has-text-color has-link-color">Incentives that make every purchase better</h2>
 <!-- /wp:heading -->
