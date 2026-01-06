@@ -24,6 +24,8 @@ class Caller {
 
 	/**
 	 * Add svgCode attribute to core/image block.
+	 * 
+	 * SVG code should have fill or stroke as currentColor to make sure it works with the theme color palette.
 	 *
 	 * @param array $settings Block settings.
 	 * @return array Modified settings.
