@@ -315,6 +315,20 @@
           "blockGap": "var:preset|spacing|2"
         }
       },
+      "core/button": {
+        "variations": {
+          "outline": {
+            "spacing": {
+              "padding": {
+                "top": "5px",
+                "right": "1rem",
+                "bottom": "5px",
+                "left": "1rem"
+              }
+            }
+          }
+        }
+      },
       "core/code": {
         "color": {
           "background": "var:preset|color|muted",
