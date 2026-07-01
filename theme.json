@@ -678,12 +678,12 @@
       "title": "Footer"
     },
     {
-      "area": "checkout-header",
+      "area": "header",
       "name": "checkout-header",
       "title": "Checkout Header"
     },
     {
-      "area": "checkout-footer",
+      "area": "footer",
       "name": "checkout-footer",
       "title": "Checkout Footer"
     }
