@@ -98,6 +98,13 @@ shadcn/
 
 ## 🔄 Changelog
 
+### Version 1.0.5
+- ✅ Added: 4 Incentives patterns.
+- ✅ Added: 2 Logo patterns.
+- ✅ Updated: Button outline spacing.
+- ✅ Fixed: Patterns grid layout.
+- ✅ Fixed: Viewbox attribute for SVG tags.
+
 ### Version 1.0.4
 - ✅ Added: Support WooCommerce Cart/Checkout template
 - ✅ Added: WooCommerce Checkout header

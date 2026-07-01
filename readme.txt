@@ -5,7 +5,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Tags: blog, block-patterns, full-site-editing
 Tested up to: 6.9
 Requires PHP: 5.3
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 
 WP Shadcn is a modern, lightweight WordPress theme built with Shadcn UI components and contemporary web technologies.
 
@@ -54,6 +54,13 @@ A: Yes, the theme follows WordPress best practices and semantic HTML standards f
 A: When creating or editing pages/posts, look for the "Patterns" section in the Block Editor to insert pre-designed content blocks.
 
 == Changelog ==
+
+= 1.0.5 =
+* Added: 4 Incentives patterns.
+* Added: 2 Logo patterns.
+* Updated: Button outline spacing.
+* Fixed: Patterns grid layout.
+* Fixed: Viewbox attribute for SVG tags.
 
 = 1.0.4 =
 * Added: Support WooCommerce Cart/Checkout template
