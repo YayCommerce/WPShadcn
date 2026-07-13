@@ -4,6 +4,7 @@
  * Slug: shadcn/incentives-6
  * Categories: shadcn, incentives
  * Description: A grid of incentives showcasing key benefits or services.
+ * AI Hint: Four icon items with short text only, no headings; best as a very compact perks band.
  */
 
 ?>

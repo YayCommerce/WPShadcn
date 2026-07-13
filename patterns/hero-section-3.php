@@ -4,6 +4,7 @@
  * Slug: shadcn/hero-section-3
  * Categories: shadcn, shadcn-banner
  * Description: A hero section with title, description, and call-to-action buttons.
+ * AI Hint: Hero with H1, subtext, two buttons, and a six-image photo collage; best when several product or lifestyle photos are available.
  */
 
 ?>

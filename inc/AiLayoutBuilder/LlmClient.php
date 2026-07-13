@@ -18,15 +18,19 @@ class LlmClient {
 	const MAX_RESPONSE_BYTES = 524288; // 512KB.
 
 	/**
-	 * Send { prompt, catalog } to the configured endpoint and return the
-	 * decoded JSON response as-is (shape validation is RestController's job,
-	 * not this class's — see Phase 2 plan).
+	 * Send { prompt, catalog, siteContext } to the configured endpoint and
+	 * return the decoded JSON response as-is (shape validation is
+	 * RestController's job, not this class's — see Phase 2 plan).
 	 *
+	 * @param string $prompt       User's design request.
+	 * @param array  $catalog      Pattern catalog.
+	 * @param array  $site_context Optional site identity hints; omitted from
+	 *                             the request body when empty.
 	 * @return mixed Whatever the endpoint's JSON body decodes to.
 	 * @throws LlmRequestException On missing config, transport error,
 	 *                              non-200 response, or malformed JSON.
 	 */
-	public function request( $prompt, array $catalog ) {
+	public function request( $prompt, array $catalog, array $site_context = array() ) {
 		$endpoint = get_option( 'shadcn_ai_layout_endpoint_url', '' );
 		$token    = get_option( 'shadcn_ai_layout_auth_token', '' );
 
@@ -58,9 +62,15 @@ class LlmClient {
 					'Authorization' => 'Bearer ' . $token,
 				),
 				'body'                => wp_json_encode(
-					array(
-						'prompt'  => $prompt,
-						'catalog' => $catalog,
+					array_merge(
+						array(
+							'prompt'  => $prompt,
+							'catalog' => $catalog,
+						),
+						// Force object encoding — a PHP array with string keys
+						// already encodes as an object, but never send an
+						// empty [] where the proxy expects an object.
+						empty( $site_context ) ? array() : array( 'siteContext' => (object) $site_context )
 					)
 				),
 			)

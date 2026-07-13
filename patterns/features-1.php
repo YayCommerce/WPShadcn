@@ -4,6 +4,7 @@
  * Slug: shadcn/features-1
  * Categories: shadcn
  * Description: A grid of features showcasing key benefits or services.
+ * AI Hint: Icon grid of six items, each with small icon, H5, and text, plus section intro and one button; best for listing 4-6 product features.
  */
 
 ?>

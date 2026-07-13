@@ -74,10 +74,11 @@ class RestController {
 		$prompt          = $request->get_param( 'prompt' );
 		$catalog_builder = new CatalogBuilder();
 		$catalog         = $catalog_builder->build();
+		$site_context    = ( new SiteContextBuilder() )->build();
 
 		try {
 			$llm_client = new LlmClient();
-			$raw_plan   = $llm_client->request( $prompt, $catalog );
+			$raw_plan   = $llm_client->request( $prompt, $catalog, $site_context );
 		} catch ( LlmRequestException $e ) {
 			return new \WP_Error(
 				'shadcn_ai_layout_llm_error',

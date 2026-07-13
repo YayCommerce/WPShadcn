@@ -4,6 +4,7 @@
  * Slug: shadcn/incentives-5
  * Categories: shadcn, incentives
  * Description: A grid of incentives showcasing key benefits or services.
+ * AI Hint: Three icon incentives with H4 and text in a left-aligned row layout, no intro heading; best for understated perk rows near the footer.
  */
 
 ?>

@@ -4,6 +4,7 @@
  * Slug: shadcn/hero-section-right-image
  * Categories: shadcn, hero
  * Description: A hero section with title, description, and call-to-action buttons, and a right image.
+ * AI Hint: Split hero with H1, subtext, and two buttons on the left and one large image right; best when a single screenshot or photo is central.
  */
 
 ?>

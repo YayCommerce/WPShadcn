@@ -1,0 +1,80 @@
+{
+  "description": "Golden prompt set for the AI Layout Builder eval runner (wp shadcn-ai-eval run). expectedSections values map to slug prefixes: hero, features, incentives, cta, logo, blog, header, footer, 404.",
+  "prompts": [
+    {
+      "id": "saas-landing-en",
+      "lang": "en",
+      "prompt": "Create a landing page for a SaaS project management tool called TaskFlow. Highlight the key features and encourage visitors to start a free trial.",
+      "expectedSections": [ "hero", "features", "logo", "cta" ]
+    },
+    {
+      "id": "cafe-landing-vn",
+      "lang": "vi",
+      "prompt": "Tạo trang giới thiệu cho quán cà phê Sài Gòn Retro, phong cách ấm cúng, nêu bật các điểm đặc biệt của quán và mời khách ghé thăm.",
+      "expectedSections": [ "hero", "incentives", "cta" ]
+    },
+    {
+      "id": "portfolio-en",
+      "lang": "en",
+      "prompt": "A personal portfolio homepage for a freelance product designer, showing what I do and inviting potential clients to get in touch.",
+      "expectedSections": [ "hero", "features", "cta" ]
+    },
+    {
+      "id": "blog-home-en",
+      "lang": "en",
+      "prompt": "A blog homepage that introduces what the blog is about and shows the latest posts.",
+      "expectedSections": [ "hero", "blog" ]
+    },
+    {
+      "id": "leather-shop-en",
+      "lang": "en",
+      "prompt": "A homepage for an online store selling handmade leather goods. Emphasize craftsmanship, free shipping and easy returns, and build trust with visitors.",
+      "expectedSections": [ "hero", "incentives", "logo", "cta" ]
+    },
+    {
+      "id": "not-found-page-en",
+      "lang": "en",
+      "prompt": "Create a friendly 404 error page that helps lost visitors find their way back.",
+      "expectedSections": [ "404" ]
+    },
+    {
+      "id": "single-cta-en",
+      "lang": "en",
+      "prompt": "Just add a call-to-action section inviting users to subscribe to our newsletter.",
+      "expectedSections": [ "cta" ]
+    },
+    {
+      "id": "fintech-full-en",
+      "lang": "en",
+      "prompt": "Build a complete landing page for a fintech startup: a strong hero with an app screenshot, a feature overview, why-choose-us benefits, partner logos, a blog teaser, and a closing call to action.",
+      "expectedSections": [ "hero", "features", "incentives", "logo", "blog", "cta" ]
+    },
+    {
+      "id": "english-center-vn",
+      "lang": "vi",
+      "prompt": "Trang chủ cho trung tâm tiếng Anh trẻ em, giọng văn thân thiện với phụ huynh, có phần lợi ích nổi bật và lời kêu gọi đăng ký học thử miễn phí.",
+      "expectedSections": [ "hero", "incentives", "cta" ]
+    },
+    {
+      "id": "topicless-features-en",
+      "lang": "en",
+      "prompt": "Add a features section highlighting what makes us different.",
+      "expectedSections": [ "features" ],
+      "notes": "Topic-less: correct copy should reflect the site's own business from siteContext, not generic placeholders."
+    },
+    {
+      "id": "topicless-home-vn",
+      "lang": "vi",
+      "prompt": "Tạo trang chủ cho cửa hàng của tôi.",
+      "expectedSections": [ "hero", "incentives", "cta" ],
+      "notes": "Topic-less VN: copy should fit the store's niche from siteContext; language must stay Vietnamese."
+    },
+    {
+      "id": "yoga-testimonials-gap-en",
+      "lang": "en",
+      "prompt": "Landing page for a yoga studio with customer testimonials and membership pricing.",
+      "expectedSections": [ "hero", "incentives", "cta" ],
+      "notes": "Theme has no testimonials/pricing patterns; a correct plan substitutes the closest sections (incentives/features) instead of forcing unrelated slugs."
+    }
+  ]
+}

@@ -4,6 +4,7 @@
  * Slug: shadcn/header-section-centered-text
  * Categories: shadcn, header
  * Description: A header section with centered title, subtitle, and call-to-action button.
+ * AI Hint: Centered page-title band with H1 and subtitle, no buttons; best as the heading of interior pages like About or Contact.
  */
 
 ?>

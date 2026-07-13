@@ -4,6 +4,7 @@
  * Slug: shadcn/header-2
  * Categories: shadcn, header
  * Description: A header with logo, title, tagline, dark mode toggle, navigation, and customer account and mini cart.
+ * AI Hint: Alternate site header with logo, navigation, dark-mode toggle, account and mini cart in a different arrangement; best for storefronts.
  */
 
 $darkmode_image_url = get_template_directory_uri() . '/assets/images/dark-mode.png';

@@ -4,6 +4,7 @@
  * Slug: shadcn/footer-2
  * Categories: shadcn, footer
  * Description: A footer with logo, title, tagline, navigation, and social media links.
+ * AI Hint: Slim single-row footer with brand, short tagline, and inline links; best for minimal sites wanting a quiet footer.
  */
 
 ?>

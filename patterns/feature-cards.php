@@ -4,6 +4,7 @@
  * Slug: shadcn/feature-cards
  * Categories: shadcn
  * Description: A grid of feature cards showcasing key benefits or services.
+ * AI Hint: Full-width band of three flat cards, each an H4 plus short text, no icons or images; best for three concise benefits or service tiers.
  */
 
 ?>

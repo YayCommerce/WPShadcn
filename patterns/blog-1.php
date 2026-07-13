@@ -4,6 +4,7 @@
  * Slug: shadcn/blog-1
  * Categories: shadcn, blog
  * Description: A list of blog posts.
+ * AI Hint: Latest-posts list rendered by a query loop with post titles and dates; best for blog homepages or news sections.
  */
 
 ?>

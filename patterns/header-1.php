@@ -4,6 +4,7 @@
  * Slug: shadcn/header-1
  * Categories: shadcn, header
  * Description: A header with logo, title, tagline, dark mode toggle, navigation, and customer account and mini cart.
+ * AI Hint: Site header bar with logo, navigation, dark-mode toggle, account and mini-cart icons; best for WooCommerce storefronts.
  */
 
 $darkmode_image_url = get_template_directory_uri() . '/assets/images/dark-mode.png';

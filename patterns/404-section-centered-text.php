@@ -4,6 +4,7 @@
  * Slug: shadcn/404-section-centered-text
  * Categories: shadcn, 404
  * Description: A 404 section with centered title, subtitle, and call-to-action button.
+ * AI Hint: Centered H1, short apology text, and one back-to-home button; best for 404 or error pages only.
  */
 
 ?>

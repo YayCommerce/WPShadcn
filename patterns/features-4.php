@@ -4,6 +4,7 @@
  * Slug: shadcn/features-4
  * Categories: shadcn
  * Description: A grid of features showcasing key benefits or services.
+ * AI Hint: Grid of five media tiles, each with H5, text, and its own button; best when every feature links to its own page or demo.
  */
 
 ?>

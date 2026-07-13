@@ -4,6 +4,7 @@
  * Slug: shadcn/hero-section-7
  * Categories: shadcn, shadcn-banner
  * Description: A hero section with title, description, and call-to-action buttons.
+ * AI Hint: Centered hero with H1, subtext, one button, and a five-avatar social-proof strip; best for community or audience-driven products.
  */
 
 ?>

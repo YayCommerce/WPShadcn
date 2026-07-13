@@ -15,6 +15,8 @@ class Caller {
 
 	protected function __construct() {
 		require_once __DIR__ . '/TextSlotHtml.php';
+		require_once __DIR__ . '/PatternHintReader.php';
+		require_once __DIR__ . '/SiteContextBuilder.php';
 		require_once __DIR__ . '/CatalogBuilder.php';
 		require_once __DIR__ . '/UnknownPatternSlugException.php';
 		require_once __DIR__ . '/PlanResolver.php';
@@ -26,6 +28,11 @@ class Caller {
 
 		RestController::get_instance();
 		SettingsPage::get_instance();
+
+		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+			require_once __DIR__ . '/EvalCommand.php';
+			\WP_CLI::add_command( 'shadcn-ai-eval', EvalCommand::class );
+		}
 
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_assets' ) );
 	}

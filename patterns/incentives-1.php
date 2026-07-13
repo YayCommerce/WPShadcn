@@ -4,6 +4,7 @@
  * Slug: shadcn/incentives-1
  * Categories: shadcn, incentives
  * Description: A grid of incentives showcasing key benefits or services.
+ * AI Hint: Three icon items with H4 and text under a section intro; best for perks like shipping, returns, or support promises.
  */
 
 ?>

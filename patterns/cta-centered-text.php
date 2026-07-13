@@ -4,6 +4,7 @@
  * Slug: shadcn/cta-centered-text
  * Categories: shadcn, cta
  * Description: A CTA with centered text.
+ * AI Hint: Centered H2, one supporting line, and a single button on a plain band; best as the closing call to action of a page.
  */
 
 ?>

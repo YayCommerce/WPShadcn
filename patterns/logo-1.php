@@ -4,6 +4,7 @@
  * Slug: shadcn/logo-1
  * Categories: shadcn, logo
  * Description: A grid of logos with a title and tagline.
+ * AI Hint: Full-width strip of ten partner logos with a small title and tagline; best for strong social proof under a hero.
  */
 
 ?>

@@ -4,6 +4,7 @@
  * Slug: shadcn/hero-section
  * Categories: shadcn, shadcn-banner
  * Description: A hero section with title, description, and call-to-action buttons.
+ * AI Hint: Centered full-width hero with H1, subtext, and two buttons, no imagery; best as a clean text-first opener for any landing page.
  */
 
 ?>

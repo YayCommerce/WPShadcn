@@ -4,6 +4,7 @@
  * Slug: shadcn/footer-1
  * Categories: shadcn, footer
  * Description: A footer with logo, title, tagline, navigation, and social media links.
+ * AI Hint: Three-column footer with brand block, tagline, H4 link groups, and social icons; best as a full site footer for content-rich sites.
  */
 
 ?>

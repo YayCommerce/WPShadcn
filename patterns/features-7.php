@@ -4,6 +4,7 @@
  * Slug: shadcn/features-7
  * Categories: shadcn
  * Description: A grid of features showcasing key benefits or services.
+ * AI Hint: Two-column grid of four image-backed feature blocks with intro and one button; best for deeper storytelling about a few features.
  */
 
 ?>
