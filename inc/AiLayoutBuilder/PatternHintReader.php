@@ -53,6 +53,16 @@ class PatternHintReader {
 			}
 		}
 
+		/**
+		 * Lets plugins that ship their own `shadcn/*` pattern files (e.g.
+		 * Shadcn Blocks) contribute hints for the AI Layout Builder catalog.
+		 * Runs before the per-request cache is returned, so contributed
+		 * hints are cached alongside the theme's own.
+		 *
+		 * @param array<string,string> $hints Pattern slug => AI hint.
+		 */
+		self::$hints = apply_filters( 'shadcn_ai_pattern_hints', self::$hints );
+
 		return self::$hints;
 	}
 }
