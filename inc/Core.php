@@ -14,7 +14,9 @@ class Core {
 
 		require_once __DIR__ . '/Core/Blocks.php';
 		require_once __DIR__ . '/Core/Patterns.php';
-		require_once __DIR__ . '/AiLayoutBuilder/Caller.php';
+		// The blocks, the section patterns and the AI Layout Builder all ship
+		// with the Shadcn Blocks plugin; this only asks for it when missing.
+		require_once __DIR__ . '/BlocksPlugin/Caller.php';
 	}
 
 	public function setup_theme() {
