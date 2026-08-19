@@ -7,8 +7,6 @@
  * AI Hint: Site header bar with logo, navigation, dark-mode toggle, account and mini-cart icons; best for WooCommerce storefronts.
  */
 
-$darkmode_image_url = get_template_directory_uri() . '/assets/images/dark-mode.png';
-
 ?>
 
 <!-- wp:group {"layout":{"type":"constrained"}} -->
@@ -31,11 +29,7 @@ $darkmode_image_url = get_template_directory_uri() . '/assets/images/dark-mode.p
 
 		<!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 		<div class="wp-block-group">
-			<!-- wp:image {"id":12,"width":"20px","sizeSlug":"full","linkDestination":"none","className":"dark-mode-toggle","style":{"color":{"duotone":["rgb(0, 0, 0)","rgb(255, 255, 255)"]}}} -->
-			<figure class="wp-block-image size-full is-resized dark-mode-toggle"><img
-					src="<?php echo esc_url( $darkmode_image_url ); ?>" alt="" class="wp-image-12"
-					style="width:20px" /></figure>
-			<!-- /wp:image -->
+			<!-- wp:icon {"icon":"core/styles","className":"dark-mode-toggle"} /-->
 
 			<!-- wp:navigation {"overlayBackgroundColor":"background","overlayTextColor":"foreground","className":"is-style-pill","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","justifyContent":"right"}} /-->
 
