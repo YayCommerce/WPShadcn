@@ -127,38 +127,11 @@ echo ""
 echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "${BLUE}  Excluded from Release:${NC}"
 echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${RED}  ✗ JSX to Gutenberg Converter${NC}"
 echo -e "${RED}  ✗ Development documentation${NC}"
-echo -e "${RED}  ✗ Example files and UI components${NC}"
 echo -e "${RED}  ✗ Build tools and configs${NC}"
 echo -e "${RED}  ✗ Test files${NC}"
 echo ""
 
-# Verification
-echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${BLUE}  Verification:${NC}"
-echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-
-# Check for converter files
-if unzip -l "$BUILD_DIR/$ZIP_NAME" | grep -q "JSXConverter"; then
-    echo -e "${RED}❌ WARNING: Converter files found in ZIP!${NC}"
-else
-    echo -e "${GREEN}✓ Converter files excluded${NC}"
-fi
-
-if unzip -l "$BUILD_DIR/$ZIP_NAME" | grep -q "context/"; then
-    echo -e "${RED}❌ WARNING: Context directory found in ZIP!${NC}"
-else
-    echo -e "${GREEN}✓ Context directory excluded${NC}"
-fi
-
-if unzip -l "$BUILD_DIR/$ZIP_NAME" | grep -q "README-CONVERTER"; then
-    echo -e "${RED}❌ WARNING: Converter docs found in ZIP!${NC}"
-else
-    echo -e "${GREEN}✓ Converter documentation excluded${NC}"
-fi
-
-echo ""
 echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "${GREEN}  ✓ Release build complete!${NC}"
 echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
