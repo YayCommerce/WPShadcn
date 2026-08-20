@@ -1,0 +1,31 @@
+/* Mirrors the plugin's own launcher styles so the entry looks identical
+   before and after the plugin is active. */
+
+.shadcn-ai-launcher {
+  padding: 16px;
+}
+
+.shadcn-ai-launcher__description {
+  margin: 0 0 12px;
+  color: #757575;
+}
+
+.shadcn-ai-launcher__open {
+  width: 100%;
+  justify-content: center;
+}
+
+.shadcn-ai-setup-modal {
+  max-width: 480px;
+}
+
+.shadcn-ai-setup-modal__error {
+  color: #cc1818;
+}
+
+.shadcn-ai-setup-modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
