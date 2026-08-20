@@ -3,8 +3,8 @@
  * Prompts the site owner to install or activate the Shadcn Blocks plugin.
  *
  * The theme ships layouts; the plugin ships the blocks those layouts are built
- * from and the AI Layout Builder that assembles them. Without the plugin the
- * theme still renders, so this is a notice rather than a hard dependency.
+ * from and Shadcn AI that assembles them. Without the plugin the theme still
+ * renders, so this is a notice rather than a hard dependency.
  *
  * @package Shadcn
  * @since 1.0.0
@@ -108,7 +108,7 @@ class Caller {
 		<div class="notice notice-info">
 			<p>
 				<strong><?php esc_html_e( 'Shadcn', 'shadcn' ); ?>:</strong>
-				<?php esc_html_e( 'Install the Shadcn Blocks plugin to use the theme\'s blocks, section patterns and the AI Layout Builder.', 'shadcn' ); ?>
+				<?php esc_html_e( 'Install the Shadcn Blocks plugin to use the theme\'s blocks, section patterns and Shadcn AI.', 'shadcn' ); ?>
 			</p>
 			<p>
 				<a class="button button-primary" href="<?php echo esc_url( $action['url'] ); ?>">
