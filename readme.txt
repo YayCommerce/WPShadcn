@@ -5,7 +5,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Tags: blog, block-patterns, full-site-editing
 Tested up to: 6.9
 Requires PHP: 5.3
-Stable tag: 1.0.5
+Stable tag: 1.1.0
 
 WP Shadcn is a modern, lightweight WordPress theme built with Shadcn UI components and contemporary web technologies.
 
@@ -54,6 +54,14 @@ A: Yes, the theme follows WordPress best practices and semantic HTML standards f
 A: When creating or editing pages/posts, look for the "Patterns" section in the Block Editor to insert pre-designed content blocks.
 
 == Changelog ==
+
+= 1.1.0 =
+* Added: Shadcn AI in the block editor. The panel offers a one-click install of the Shadcn Blocks plugin, which ships the blocks the patterns are built from and the prompt-to-layout builder itself.
+* Added: An AI Hint on every pattern, describing what the section is for so Shadcn AI can match a request to the right one.
+* Added: Testimonial 12 pattern.
+* Updated: The dark mode toggle now uses the WordPress icon block instead of a bundled PNG.
+* Fixed: The dark mode script no longer replaces the toggle markup on load, and it keeps aria-label and aria-pressed in sync on every toggle on the page, not just the first.
+* Removed: The JSX to Gutenberg converter admin tool, along with the example and reference files it shipped with.
 
 = 1.0.5 =
 * Added: 4 Incentives patterns.
