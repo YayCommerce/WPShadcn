@@ -73,6 +73,47 @@ WooCommerce Inputs Styles
 }
 
 /* ==========================================================================
+WooCommerce Product Grid
+========================================================================== */
+
+/* The grid stretches each list item, but the bordered card inside it is only
+   as tall as its content, so cards in a row end at different heights whenever
+   a product omits a price. Fill the cell and push the button to the bottom so
+   every card in a row shares the same baseline. The card itself is a vertical
+   flex layout, set on the block in the template-product-loop pattern. */
+.wc-block-product-template .wc-block-product > .wp-block-group {
+  height: 100%;
+}
+
+.wc-block-product-template
+  .wc-block-product
+  > .wp-block-group
+  > .wc-block-components-product-button {
+  margin-top: auto;
+}
+
+/* Core centres the add-to-cart button while the title and price start at the
+   card's left edge. The button wrapper is a flex column, so its horizontal
+   placement comes from align-items rather than justify-content. */
+.wc-block-product-template .wc-block-components-product-button {
+  align-items: flex-start;
+}
+
+/* ==========================================================================
+WooCommerce Single Product
+========================================================================== */
+
+/* Core separates the quantity field from the add-to-cart button with a 4px
+   margin, which reads as touching next to the taller themed controls. */
+.wp-block-woocommerce-add-to-cart-form form.cart {
+  gap: 0.75rem;
+}
+
+.wp-block-woocommerce-add-to-cart-form form.cart .quantity {
+  margin-right: 0;
+}
+
+/* ==========================================================================
 WooCommerce Cart Items Block
 ========================================================================== */
 
@@ -95,8 +136,14 @@ WooCommerce Cart Items Block
   font-size: 1rem;
 }
 
+/* Core fixes the selector at 107px, which is narrower than the themed 30px
+   bordered buttons; the plus button then overflows onto the remove icon.
+   Size the selector to its content and space the parts explicitly instead. */
 .wc-block-components-quantity-selector {
   border: none;
+  width: auto;
+  gap: 0.25rem;
+  overflow: visible;
 }
 
 .wc-block-components-quantity-selector:after {
@@ -160,8 +207,19 @@ WooCommerce Cart Items Block
   padding: 1rem !important;
 }
 
+/* Inset the thumbnail so it does not sit flush against the row border, and
+   round it so a square image never collides with the card's rounded corner. */
 .wc-block-cart-items__row .wc-block-cart-item__image {
-  padding: 0 !important;
+  padding: 1rem 0 1rem 1rem !important;
+}
+
+.wc-block-cart-items__row .wc-block-cart-item__image img {
+  border-radius: calc(var(--radius) - 2px);
+}
+
+/* The product cell already carries the row's left padding via the image cell. */
+.wc-block-cart-items__row .wc-block-cart-item__product {
+  padding-left: 1rem !important;
 }
 .wc-block-cart-items__row .wc-block-components-product-metadata {
   color: var(--muted-foreground);
