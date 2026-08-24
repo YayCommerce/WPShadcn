@@ -29,6 +29,11 @@ WooCommerce Inputs Styles
   gap: 6px;
 }
 
+/* Core floats the label into the field and lifts it with `top:6px` plus a
+   scale once the field is active or autofilled. The label is stacked above
+   the field here, so both must be cleared - `top` included, since core's
+   `.is-active label` outranks the static label rule below and would otherwise
+   push the label 6px down as soon as the field takes a value. */
 .wc-block-components-form
   .wc-block-components-text-input
   input:-webkit-autofill
@@ -36,6 +41,7 @@ WooCommerce Inputs Styles
 .wc-block-components-form .wc-block-components-text-input.is-active label,
 .wc-block-components-text-input input:-webkit-autofill + label,
 .wc-block-components-text-input.is-active label {
+  top: unset;
   transform: none;
 }
 
