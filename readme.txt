@@ -3,7 +3,7 @@ Contributors: yaycommerce
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Tags: blog, block-patterns, full-site-editing
-Tested up to: 6.9
+Tested up to: 7.1
 Requires PHP: 5.3
 Stable tag: 1.2.0
 
