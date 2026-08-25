@@ -1,0 +1,331 @@
+/* ==========================================================================
+Checkout layouts
+
+Opt-in arrangements for the WooCommerce Checkout block, applied by the theme's
+Change layout picker. The picker puts one `is-checkout-*` class on the block
+wrapper; everything below hangs off that class, so a site that never opens the
+picker is untouched by this file.
+
+WooCommerce renders the checkout with React at runtime, so block markup can only
+decide the order of the sections. Everything visual - column count, which side
+the summary sits on, section chrome, density - has to happen here.
+
+Three conventions run through the file:
+
+1. Layout selectors are doubled (`.is-checkout-x.is-checkout-x`) so they never
+   depend on load order. woocommerce.css is enqueued after this file, and
+   WooCommerce enqueues its own block styles on demand, so a tie on specificity
+   would resolve against these rules.
+
+2. Anything addressing the two columns goes through
+   `.wc-block-components-sidebar-layout`. woocommerce.css places the main column
+   with `grid-column: span 2` at (0,3,0); without that extra step in the chain,
+   a layout that wants a different split silently keeps the old one.
+
+3. The desktop arrangement is stated unconditionally, and the single-column
+   collapse is what sits behind a media query. That way the schematics in the
+   layout picker - which render at desktop viewport width but inside a 180px
+   card - show the real desktop arrangement instead of the mobile one.
+
+This file is loaded in the editor too, so the picker's schematics are laid out
+by these same rules. Fallbacks are given for every theme custom property,
+because the picker renders outside the canvas iframe where they are not in
+scope.
+========================================================================== */
+
+/* --------------------------------------------------------------------------
+Shared base
+
+Applies to every layout. The attribute selector saves repeating the block six
+times over; it is namespaced tightly enough that nothing else can match.
+-------------------------------------------------------------------------- */
+
+.wp-block-woocommerce-checkout[class*="is-checkout-"]
+  .wc-block-components-sidebar-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: calc(var(--spacing, 0.25rem) * 8);
+  /* Without this the shorter column stretches to the taller one, which stops
+     the order summary card from sizing to its own content. */
+  align-items: start;
+}
+
+/* Clear the placement the WooCommerce and theme stylesheets set on these two.
+   `order` matters as much as `grid-column`: WooCommerce ships `order: 1` on the
+   main column and `order: 0` on the sidebar, and grid auto-placement walks its
+   items in `order` sequence. With the sidebar going first, sparse packing fills
+   column 3 and then has nowhere left on row 1 for a column that spans 1-2, so
+   the form drops to a second row. Every layout below therefore states its rows
+   outright rather than trusting auto-placement. */
+.wp-block-woocommerce-checkout[class*="is-checkout-"]
+  .wc-block-components-sidebar-layout
+  .wc-block-components-main,
+.wp-block-woocommerce-checkout[class*="is-checkout-"]
+  .wc-block-components-sidebar-layout
+  .wc-block-components-sidebar {
+  grid-column: auto;
+  grid-row: auto;
+  order: 0;
+  width: 100%;
+  padding: 0;
+}
+
+/* --------------------------------------------------------------------------
+Two Column - the theme default
+
+Form in a wide left column, order summary on the right.
+-------------------------------------------------------------------------- */
+
+.wp-block-woocommerce-checkout.is-checkout-two-column.is-checkout-two-column
+  .wc-block-components-sidebar-layout {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.wp-block-woocommerce-checkout.is-checkout-two-column.is-checkout-two-column
+  .wc-block-components-sidebar-layout
+  .wc-block-components-main {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+.wp-block-woocommerce-checkout.is-checkout-two-column.is-checkout-two-column
+  .wc-block-components-sidebar-layout
+  .wc-block-components-sidebar {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* --------------------------------------------------------------------------
+Summary First
+
+Same split, summary moved to the left column. Explicit column and row keep the
+two side by side regardless of source order - the summary is the second child
+in the DOM and must not wrap to a new row.
+-------------------------------------------------------------------------- */
+
+.wp-block-woocommerce-checkout.is-checkout-summary-left.is-checkout-summary-left
+  .wc-block-components-sidebar-layout {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.wp-block-woocommerce-checkout.is-checkout-summary-left.is-checkout-summary-left
+  .wc-block-components-sidebar-layout
+  .wc-block-components-main {
+  grid-column: 2 / span 2;
+  grid-row: 1;
+}
+
+.wp-block-woocommerce-checkout.is-checkout-summary-left.is-checkout-summary-left
+  .wc-block-components-sidebar-layout
+  .wc-block-components-sidebar {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* --------------------------------------------------------------------------
+Single Column
+
+Summary stacked on top of a narrow, centred form.
+-------------------------------------------------------------------------- */
+
+.wp-block-woocommerce-checkout.is-checkout-single-column.is-checkout-single-column
+  .wc-block-components-sidebar-layout {
+  max-width: 42rem;
+  margin-inline: auto;
+  gap: calc(var(--spacing, 0.25rem) * 6);
+}
+
+/* WooCommerce marks the sidebar `is-sticky` whenever it measures the summary as
+   short enough to pin, without knowing which column the theme put it in. Here it
+   sits above the form, so pinning would park it across the top of the viewport
+   and scroll the form underneath it. Stacked summaries never stick. */
+.wp-block-woocommerce-checkout.is-checkout-single-column.is-checkout-single-column
+  .wc-block-components-sidebar-layout
+  .wc-block-components-sidebar {
+  position: static;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.wp-block-woocommerce-checkout.is-checkout-single-column.is-checkout-single-column
+  .wc-block-components-sidebar-layout
+  .wc-block-components-main {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/* --------------------------------------------------------------------------
+Stepped
+
+Numbered steps - the pattern turns on the block's `showFormStepNumbers`
+attribute - with each step drawn as its own card.
+
+WooCommerce reserves a 36px gutter on a numbered step for the counter it
+positions there. The padding below keeps that gutter and adds the card inset
+around it, so the number still lands beside its title.
+-------------------------------------------------------------------------- */
+
+.wp-block-woocommerce-checkout.is-checkout-stepped.is-checkout-stepped
+  .wc-block-components-sidebar-layout {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.wp-block-woocommerce-checkout.is-checkout-stepped.is-checkout-stepped
+  .wc-block-components-sidebar-layout
+  .wc-block-components-main {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+.wp-block-woocommerce-checkout.is-checkout-stepped.is-checkout-stepped
+  .wc-block-components-sidebar-layout
+  .wc-block-components-sidebar {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.wp-block-woocommerce-checkout.is-checkout-stepped.is-checkout-stepped
+  .wc-block-components-checkout-step {
+  margin-bottom: calc(var(--spacing, 0.25rem) * 4);
+  padding: calc(var(--spacing, 0.25rem) * 6);
+  border: 1px solid var(--border, #e5e5e5);
+  border-radius: calc(var(--radius, 0.625rem) + 4px);
+  background-color: var(--card, #fff);
+}
+
+.wp-block-woocommerce-checkout.is-checkout-stepped.is-checkout-stepped
+  .wc-block-checkout__form--with-step-numbers
+  .wc-block-components-checkout-step--with-step-number {
+  padding-left: calc(var(--spacing, 0.25rem) * 14);
+}
+
+/* The dotted rail WooCommerce draws down the left of a numbered step joins one
+   step to the next. Boxed steps already read as a sequence, and the rail would
+   run straight through the card border. */
+.wp-block-woocommerce-checkout.is-checkout-stepped.is-checkout-stepped
+  .wc-block-checkout__form--with-step-numbers
+  .wc-block-components-checkout-step--with-step-number
+  .wc-block-components-checkout-step__content::before,
+.wp-block-woocommerce-checkout.is-checkout-stepped.is-checkout-stepped
+  .wc-block-checkout__form--with-step-numbers
+  .wc-block-components-checkout-step--with-step-number
+  .wc-block-components-checkout-step__description::before {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+Compact
+
+Tighter rhythm and no card chrome on the summary, for shops with short forms.
+
+Pinning the summary is left to WooCommerce, which adds `is-sticky` only after
+measuring that the summary fits the viewport. Forcing it here would pin summaries
+taller than the screen too, and a sticky element taller than its viewport parks
+with its bottom cut off - the same defect stacked layouts get from `is-sticky`.
+-------------------------------------------------------------------------- */
+
+.wp-block-woocommerce-checkout.is-checkout-compact.is-checkout-compact
+  .wc-block-components-sidebar-layout {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: calc(var(--spacing, 0.25rem) * 6);
+}
+
+.wp-block-woocommerce-checkout.is-checkout-compact.is-checkout-compact
+  .wc-block-components-sidebar-layout
+  .wc-block-components-main {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+.wp-block-woocommerce-checkout.is-checkout-compact.is-checkout-compact
+  .wc-block-components-sidebar-layout
+  .wc-block-components-sidebar {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.wp-block-woocommerce-checkout.is-checkout-compact.is-checkout-compact
+  .wc-block-components-checkout-step {
+  margin-bottom: calc(var(--spacing, 0.25rem) * 5);
+}
+
+.wp-block-woocommerce-checkout.is-checkout-compact.is-checkout-compact
+  .wp-block-woocommerce-checkout-order-summary-block {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+Wide Summary
+
+An even split, with the order summary given the same weight as the form and
+roomier line items to match.
+-------------------------------------------------------------------------- */
+
+.wp-block-woocommerce-checkout.is-checkout-wide-summary.is-checkout-wide-summary
+  .wc-block-components-sidebar-layout {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.wp-block-woocommerce-checkout.is-checkout-wide-summary.is-checkout-wide-summary
+  .wc-block-components-sidebar-layout
+  .wc-block-components-main {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.wp-block-woocommerce-checkout.is-checkout-wide-summary.is-checkout-wide-summary
+  .wc-block-components-sidebar-layout
+  .wc-block-components-sidebar {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.wp-block-woocommerce-checkout.is-checkout-wide-summary.is-checkout-wide-summary
+  .wc-block-components-order-summary-item__image {
+  width: 5rem;
+}
+
+.wp-block-woocommerce-checkout.is-checkout-wide-summary.is-checkout-wide-summary
+  .wc-block-components-order-summary-item {
+  padding: calc(var(--spacing, 0.25rem) * 4) 0;
+}
+
+/* --------------------------------------------------------------------------
+Narrow widths
+
+Every multi-column layout folds to one column below the theme's `lg` breakpoint.
+Stated last so it wins the tie against the layout rules above, which share its
+specificity.
+-------------------------------------------------------------------------- */
+
+@media (max-width: 63.999rem) {
+  .wp-block-woocommerce-checkout[class*="is-checkout-"][class*="is-checkout-"]
+    .wc-block-components-sidebar-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* On a phone the summary belongs above the form in every layout: it is what
+     the shopper confirms before they start typing. Stated as rows rather than
+     `order`, for the auto-placement reason given at the top of the file. */
+  .wp-block-woocommerce-checkout[class*="is-checkout-"][class*="is-checkout-"]
+    .wc-block-components-sidebar-layout
+    .wc-block-components-sidebar {
+    /* Below this breakpoint every layout stacks, so the summary is above the
+       form in all of them and WooCommerce's `is-sticky` would pin it over the
+       fields - the same reason Single Column opts out at every width. */
+    position: static;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .wp-block-woocommerce-checkout[class*="is-checkout-"][class*="is-checkout-"]
+    .wc-block-components-sidebar-layout
+    .wc-block-components-main {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}

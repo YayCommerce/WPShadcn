@@ -1,0 +1,196 @@
+/* ==========================================================================
+Layout picker - editor only
+
+Styles the modal and its layout cards. The schematic inside each card is laid
+out by the family's own stylesheet - assets/css/mini-cart-layouts.css and
+assets/css/checkout-layouts.css - which the editor loads too, so the cards
+always reflect the real layout rules.
+========================================================================== */
+
+/* WP's Modal sizes itself to its content, so `max-width` alone left the dialog
+   narrow enough to fit only two cards. Ask for a width outright. */
+.shadcn-layout-modal {
+  width: min(760px, 92vw);
+  max-width: 760px;
+}
+
+.shadcn-layout-modal__intro {
+  margin: 0 0 16px;
+  color: #757575;
+}
+
+.shadcn-layout-modal__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.shadcn-layout-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+}
+
+.shadcn-layout-card:hover {
+  border-color: #949494;
+}
+
+.shadcn-layout-card:focus-visible {
+  outline: 2px solid var(--wp-admin-theme-color, #3858e9);
+  outline-offset: 2px;
+}
+
+.shadcn-layout-card.is-active {
+  border-color: var(--wp-admin-theme-color, #3858e9);
+  box-shadow: 0 0 0 1px var(--wp-admin-theme-color, #3858e9);
+}
+
+.shadcn-layout-card__title {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+Schematic preview
+
+Grey placeholder boxes standing in for images, text and totals. Real data
+cannot be rendered here - BlockPreview returns nothing for the mini cart and
+checkout blocks because they resolve their contents from the Store API at
+runtime.
+-------------------------------------------------------------------------- */
+
+/* Every layout produces a different natural height - a two-column grid is short,
+   a large-thumbnail list is very tall - which left the cards wildly uneven and
+   unusable for comparison. Fix the box and crop: a thumbnail only has to show
+   the arrangement, not the whole page. */
+.shadcn-layout-preview {
+  /* The picker renders on the editor root, outside the canvas iframe, so the
+     theme's custom properties are not in scope here - layouts that colour
+     themselves with `--foreground`, `--card` or `--border` would come out
+     blank. Supply neutral admin-palette stand-ins so those layouts still read
+     correctly in the thumbnail. */
+  --foreground: #1e1e1e;
+  --background: #fff;
+  --card: #fff;
+  --border: #dcdcde;
+  --radius: 6px;
+
+  height: 150px;
+  overflow: hidden;
+  padding: 8px;
+  border-radius: 2px;
+  background: #f6f7f7;
+  pointer-events: none;
+}
+
+.shadcn-layout-preview__line {
+  display: block;
+  height: 5px;
+  border-radius: 2px;
+  background: #dcdcde;
+}
+
+.shadcn-layout-preview__line + .shadcn-layout-preview__line {
+  margin-top: 4px;
+}
+
+.shadcn-layout-preview__line.is-short {
+  width: 55%;
+}
+
+.shadcn-layout-preview__bar {
+  display: block;
+  width: 100%;
+  height: 8px;
+  border-radius: 2px;
+  background: #c3c4c7;
+}
+
+.shadcn-layout-preview__bar.is-title {
+  width: 50%;
+  margin-bottom: 6px;
+}
+
+/* --------------------------------------------------------------------------
+Mini cart schematic
+-------------------------------------------------------------------------- */
+
+/* The skeleton uses real table markup so the layout rules match it. Strip the
+   default table presentation so only those rules decide how it looks. */
+.shadcn-layout-preview--mini-cart .wc-block-cart-items {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* The title placeholder carries WooCommerce's real class so layouts that style
+   the title bar - Bold Header - show it here too. This rule is the plain
+   default; a layout rule like `.is-mini-cart-bold-header.is-mini-cart-bold-header
+   .wc-block-mini-cart__title` outranks it. */
+.shadcn-layout-preview--mini-cart .wc-block-mini-cart__title {
+  width: 50%;
+  height: 8px;
+  margin: 0 0 8px;
+  border-radius: 2px;
+  background: #c3c4c7;
+}
+
+.shadcn-layout-preview--mini-cart .shadcn-layout-preview__bar {
+  margin-top: 8px;
+}
+
+.shadcn-layout-preview--mini-cart .wc-block-cart-item__image span {
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 2px;
+  background: #c3c4c7;
+}
+
+.shadcn-layout-preview--mini-cart .wc-block-cart-item__total span {
+  display: block;
+  width: 24px;
+  height: 5px;
+  border-radius: 2px;
+  background: #dcdcde;
+}
+
+/* --------------------------------------------------------------------------
+Checkout schematic
+
+The checkout layouts size their columns in `cqi`/`fr` units against the real
+page width, so the schematic only has to supply the boxes: the grid rules in
+checkout-layouts.css place them.
+-------------------------------------------------------------------------- */
+
+/* The checkout layouts space their columns with the theme's `--spacing` step,
+   which is sized for a full page. Shrink the step rather than the whole
+   schematic: a transform would blur the boxes, while a smaller step keeps the
+   grid proportions the layout rules produce. */
+.shadcn-layout-preview--checkout {
+  --spacing: 1.5px;
+}
+
+.shadcn-layout-preview--checkout .wc-block-components-checkout-step {
+  padding: 6px;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.shadcn-layout-preview--checkout
+  .wc-block-components-checkout-step
+  + .wc-block-components-checkout-step {
+  margin-top: 6px;
+}
+
+.shadcn-layout-preview--checkout
+  .wp-block-woocommerce-checkout-order-summary-block {
+  padding: 6px;
+  border: 1px solid #dcdcde;
+  border-radius: 2px;
+  background: #fff;
+}

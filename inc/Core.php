@@ -14,6 +14,11 @@ class Core {
 
 		require_once __DIR__ . '/Core/Blocks.php';
 		require_once __DIR__ . '/Core/Patterns.php';
+		// Shared markup for the checkout layout patterns. Loaded here rather
+		// than from a pattern file because WordPress requires the files in
+		// patterns/ in an unspecified order, so no pattern can depend on
+		// another having been loaded first.
+		require_once __DIR__ . '/Patterns/CheckoutLayout.php';
 		// The blocks, the section patterns and Shadcn AI all ship with the
 		// Shadcn Blocks plugin; this only asks for it when missing.
 		require_once __DIR__ . '/BlocksPlugin/Caller.php';

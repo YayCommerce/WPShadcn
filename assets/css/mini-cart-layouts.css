@@ -1,0 +1,453 @@
+/* ==========================================================================
+Mini Cart drawer layouts
+
+Opt-in layouts for the Mini-Cart drawer, applied through the theme's "Change
+layout" picker on the Mini-Cart Contents block. Each layout is a class on that
+block; the picker also swaps the block tree so the chrome (title, footer
+buttons) matches.
+
+Item layout has to live here rather than in the block tree:
+woocommerce/mini-cart-products-table-block is a leaf block whose DOM is fixed,
+so CSS is the only thing that can rearrange cart items.
+
+SCOPING
+The `is-mini-cart-*` class is the scope. It only ever lands on the Mini-Cart
+Contents block, so these rules cannot reach the cart page or the checkout order
+summary even though those reuse .wc-block-cart-items__row. Scoping to
+.wc-block-mini-cart__drawer as well would be redundant, and would break the two
+places that element does not exist: the editor canvas and the schematic
+previews in the layout picker.
+
+SPECIFICITY
+WooCommerce hard-codes the item grid for every drawer-sized container:
+
+  .is-mobile table.wc-block-cart-items .wc-block-cart-items__row          (0,3,1)
+    { display: grid; grid-template-columns: 80px 132px; column-gap: 16px }
+  .is-mobile table.wc-block-cart-items .wc-block-cart-items__row .wc-...  (0,4,1)
+
+The drawer always carries `is-mobile`, so those always apply here. Rules below
+therefore write the layout class twice and keep `table.wc-block-cart-items` in
+the chain, landing at (0,4,1) for rows and (0,5,1) for cells - just past
+WooCommerce, without inventing an ancestor that might change. Matching its
+specificity and relying on source order would be brittle: the mini cart
+stylesheet is enqueued on demand and can load after the theme's.
+
+The items list is a <table> and each row a <tr>. These layouts redefine the
+row's grid rather than forcing it to flex, so table semantics stay intact.
+========================================================================== */
+
+/* --------------------------------------------------------------------------
+Grid 2 Columns - cart items in two columns, image above the details
+-------------------------------------------------------------------------- */
+
+/* The grid goes on <tbody>, not <table>. The rows are <tr> children of an
+   implicit <tbody>, so a grid on the table would only ever have one grid item
+   - the tbody - and every row would still stack in a single column. */
+/* The drawer's width is an attribute on the Mini-Cart Contents block (480px by
+   default) and is independent of the viewport, so a viewport media query is the
+   wrong tool for the narrow fallback: it would collapse a roomy drawer on a
+   small screen, and leave a narrow drawer in two columns on a large one. Make
+   the block a size container and query its own width instead.
+
+   The container is scoped to the real drawer on purpose. In the editor the
+   block is a flex item of `.wc-block-editor-mini-cart-contents__wrapper` with
+   `flex: 0 1 auto`, so its width comes from its contents - and `container-type:
+   inline-size` is precisely the thing that stops contents sizing an element,
+   which collapses it to 0px and shreds the canvas. The trade-off is that the
+   narrow fallback does not preview in the editor or in the picker schematics;
+   both show the two-column layout, which is what the default 480px drawer
+   renders anyway. */
+.wc-block-mini-cart__drawer .is-mini-cart-grid-2 {
+  container-type: inline-size;
+  container-name: shadcn-mini-cart;
+}
+
+.is-mini-cart-grid-2 .wc-block-cart-items tbody {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.is-mini-cart-grid-2.is-mini-cart-grid-2
+  table.wc-block-cart-items
+  .wc-block-cart-items__row {
+  /* `display: grid` is restated rather than inherited from WooCommerce's own
+     `.is-mobile table… .wc-block-cart-items__row` rule. That rule only exists
+     inside the drawer, so relying on it left the row as a plain `table-row`
+     everywhere else - the picker's schematics rendered a layout the drawer
+     never produces. Owning the property keeps the layout self-sufficient and
+     survives WooCommerce changing that rule. */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 0;
+  row-gap: 0.5rem;
+  margin-bottom: 0;
+  padding: 0.75rem !important;
+}
+
+.is-mini-cart-grid-2.is-mini-cart-grid-2
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__image {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  padding: 0 !important;
+}
+
+.is-mini-cart-grid-2.is-mini-cart-grid-2
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__image img {
+  width: 100%;
+  height: auto;
+}
+
+.is-mini-cart-grid-2.is-mini-cart-grid-2
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__product {
+  grid-column: 1;
+  grid-row: 2;
+  padding: 0 !important;
+}
+
+/* The per-item total sits under the details in this layout rather than in its
+   own right-hand column. */
+.is-mini-cart-grid-2.is-mini-cart-grid-2
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__total {
+  grid-column: 1;
+  grid-row: 3;
+  padding: 0 !important;
+  text-align: left;
+}
+
+/* A two-column grid needs room. Below roughly 400px of drawer width each
+   column drops under ~180px, which is too tight for an image plus a title, a
+   price and a quantity stepper - so fall back to a single column. */
+@container shadcn-mini-cart (max-width: 400px) {
+  .is-mini-cart-grid-2 .wc-block-cart-items tbody {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* --------------------------------------------------------------------------
+Suggestion strip - shared by every layout
+
+Uses the `best-sellers` collection rather than `cross-sells` or `related`.
+Those resolve their products from `productCollectionLocation`, which is only of
+type 'cart' on the cart and checkout pages (ProductCollection/Utils.php). The
+mini cart sits in the header on every page, so on a shop or product page they
+resolve to nothing at all - measured, not assumed.
+
+Even a cart-aware collection would go stale here: the drawer's markup is
+rendered server side once per page load (MiniCart.php), and only the item list
+re-renders client side. So the strip is deliberately independent of cart
+contents, and its heading says "You might also like" rather than implying the
+products relate to what is in the cart.
+-------------------------------------------------------------------------- */
+
+.is-mini-cart-suggestions {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.is-mini-cart-suggestions .wp-block-heading {
+  margin: 0 0 0.75rem;
+}
+
+/* Three products across a 480px drawer leaves roughly 130px each, so the cards
+   stay image-led with small supporting text. */
+.is-mini-cart-suggestions .wc-block-product-template {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.is-mini-cart-suggestions .wc-block-product {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  width: auto !important;
+  max-width: none !important;
+}
+
+.is-mini-cart-suggestions .wc-block-product img {
+  width: 100%;
+  height: auto;
+}
+
+.is-mini-cart-suggestions .wp-block-post-title {
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Push the button to the bottom of each card so the three line up even when
+   titles wrap to different heights, and let it fill the narrow column. */
+.is-mini-cart-suggestions .wc-block-components-product-button {
+  margin-top: auto;
+  padding-top: 0.25rem;
+  align-items: stretch;
+  /* Adding to the cart appends an empty span next to the button. The wrapper is
+     a flex column with a 12px gap, so that empty node silently made the card
+     12px taller and knocked the row of buttons out of line. */
+  gap: 0;
+}
+
+.is-mini-cart-suggestions .wc-block-components-product-button .wp-element-button {
+  width: 100%;
+  padding: 0.375rem 0.5rem;
+  text-align: center;
+}
+
+/* After adding, WooCommerce appends a "View cart" link under the button. In a
+   ~140px column it wraps and knocks the three cards out of alignment, and the
+   drawer already has a View my cart action in its footer a few pixels below. */
+.is-mini-cart-suggestions.is-mini-cart-suggestions
+  .wc-block-components-product-button
+  .added_to_cart {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+Card List - each item in a bordered card, thumbnail left, details right
+-------------------------------------------------------------------------- */
+
+.is-mini-cart-card-list.is-mini-cart-card-list
+  table.wc-block-cart-items
+  .wc-block-cart-items__row {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  column-gap: 0.75rem;
+  row-gap: 0.25rem;
+  align-items: start;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem !important;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 2px);
+  background-color: var(--card);
+}
+
+.is-mini-cart-card-list.is-mini-cart-card-list
+  table.wc-block-cart-items
+  .wc-block-cart-items__row:last-child {
+  margin-bottom: 0;
+}
+
+.is-mini-cart-card-list.is-mini-cart-card-list
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__image {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 72px;
+  padding: 0 !important;
+}
+
+.is-mini-cart-card-list.is-mini-cart-card-list
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__product {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 0 !important;
+}
+
+.is-mini-cart-card-list.is-mini-cart-card-list
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__total {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 0 !important;
+  text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+Compact - small thumbnail, one dense row per item
+-------------------------------------------------------------------------- */
+
+.is-mini-cart-compact.is-mini-cart-compact
+  table.wc-block-cart-items
+  .wc-block-cart-items__row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  column-gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem !important;
+}
+
+.is-mini-cart-compact.is-mini-cart-compact
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__image {
+  grid-column: 1;
+  width: 48px;
+  padding: 0 !important;
+}
+
+.is-mini-cart-compact.is-mini-cart-compact
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__product {
+  grid-column: 2;
+  padding: 0 !important;
+}
+
+.is-mini-cart-compact.is-mini-cart-compact
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__total {
+  grid-column: 3;
+  padding: 0 !important;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* The short description is the first thing to go when space is tight - the
+   title, price and quantity all carry more weight in a dense list. */
+.is-mini-cart-compact .wc-block-components-product-metadata {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+Large Thumbnail - oversized image with the details stacked beside it
+-------------------------------------------------------------------------- */
+
+.is-mini-cart-large-thumb.is-mini-cart-large-thumb
+  table.wc-block-cart-items
+  .wc-block-cart-items__row {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  column-gap: 1rem;
+  row-gap: 0.25rem;
+  align-items: start;
+  margin-bottom: 1rem;
+  padding: 0.75rem !important;
+}
+
+.is-mini-cart-large-thumb.is-mini-cart-large-thumb
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__image {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 104px;
+  padding: 0 !important;
+}
+
+.is-mini-cart-large-thumb.is-mini-cart-large-thumb
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__product {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 0 !important;
+}
+
+.is-mini-cart-large-thumb.is-mini-cart-large-thumb
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__total {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 0 !important;
+  text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+Bold Header - solid title bar above a standard item list
+
+The title bar is CSS rather than a wrapping group block: the Mini-Cart Title
+block declares `parent: ['woocommerce/filled-mini-cart-contents-block']`, so it
+can only ever be a direct child there. Wrapping it in a core/group would make
+the block invalid.
+-------------------------------------------------------------------------- */
+
+/* A full-bleed bar was tried first and fought the drawer chrome on three
+   fronts: the drawer reserves a 32px strip up top for the close button, that
+   button is absolutely positioned outside this block's reach, and it inherits
+   the page foreground colour - so a dark bar underneath it made the close
+   control invisible. An inset bar avoids all of it.
+     - 16px side margin matches the gutter the items block and footer already
+       use, so the bar lines up with everything else instead of bleeding past.
+     - The top margin clears the close button's glyph rather than sliding under
+       it, which keeps the control legible without recolouring core's chrome.
+     - The radius can stay, because an inset bar never meets the drawer edge. */
+.is-mini-cart-bold-header.is-mini-cart-bold-header .wc-block-mini-cart__title {
+  margin: 2.5rem 1rem 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: calc(var(--radius) - 2px);
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+/* --------------------------------------------------------------------------
+Summary - quantity stepper and remove control hidden for a quieter list
+
+This is a visual treatment only. The cart is not locked: quantities and removal
+stay available on the Cart and Checkout pages. Do not describe it as read-only.
+-------------------------------------------------------------------------- */
+
+.is-mini-cart-summary .wc-block-components-quantity-selector {
+  display: none;
+}
+
+/* The remove link needs the long chain: WooCommerce sets `display: inline` on
+   it at (0,4,1) via
+   `table.wc-block-cart-items .wc-block-cart-items__row .wc-block-cart-item__quantity .wc-block-cart-item__remove-link`,
+   which outranks a plain `.is-mini-cart-summary .wc-block-cart-item__remove-link`. */
+.is-mini-cart-summary.is-mini-cart-summary
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__quantity
+  .wc-block-cart-item__remove-link {
+  display: none;
+}
+
+.is-mini-cart-summary.is-mini-cart-summary
+  table.wc-block-cart-items
+  .wc-block-cart-items__row {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  column-gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem !important;
+}
+
+.is-mini-cart-summary.is-mini-cart-summary
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__image {
+  grid-column: 1;
+  width: 56px;
+  padding: 0 !important;
+}
+
+.is-mini-cart-summary.is-mini-cart-summary
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__product {
+  grid-column: 2;
+  padding: 0 !important;
+}
+
+.is-mini-cart-summary.is-mini-cart-summary
+  table.wc-block-cart-items
+  .wc-block-cart-items__row
+  .wc-block-cart-item__total {
+  grid-column: 3;
+  padding: 0 !important;
+  text-align: right;
+  white-space: nowrap;
+}

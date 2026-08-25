@@ -371,6 +371,26 @@ WooCommerce Cart/Checkout Block Styles
   width: 100%;
 }
 
+/* In the editor Gutenberg wraps a block's children in containers of its own, so
+   the main and sidebar columns stop being grid items of the sidebar layout and
+   everything collapses into the first column - the canvas then shows an
+   arrangement the front end never renders. `display: contents` hands the two
+   columns back to the grid. Both class names exist only inside the editor, so
+   this rule matches nothing on the front end.
+
+   The selector is doubled to outrank wc-blocks-editor-style.css, which lays the
+   same wrapper out as a flex row. WooCommerce builds the canvas with flex and
+   the front end with grid; left alone, the two disagree and the editor previews
+   an arrangement the shopper never sees. Handing both back to the grid is what
+   lets one set of layout rules serve the canvas and the front end alike. */
+.wc-block-components-sidebar-layout.wc-block-components-sidebar-layout
+  > .block-editor-inner-blocks,
+.wc-block-components-sidebar-layout.wc-block-components-sidebar-layout
+  > .block-editor-inner-blocks
+  > .block-editor-block-list__layout {
+  display: contents;
+}
+
 .wc-block-components-sidebar-layout .wc-block-components-main {
   padding: 0;
 }
