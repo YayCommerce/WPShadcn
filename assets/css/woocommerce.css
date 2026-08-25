@@ -123,9 +123,30 @@ WooCommerce Single Product
 WooCommerce Cart Items Block
 ========================================================================== */
 
+/* WooCommerce paints the drawer background as an inline style bound through the
+   Interactivity API (`data-wp-style--background-color` in MiniCartContents.php),
+   resolved once to a literal colour when the page renders. Toggling dark mode
+   client side never revisits that state, so the panel keeps the background of
+   whichever mode the page loaded in while the text keeps following the live
+   variables - white text on a white panel, or black on black.
+
+   Point the background back at the variable so it tracks the toggle. The
+   `!important` is required rather than stylistic: nothing outranks an inline
+   style, and this value comes from theme.json anyway
+   (`styles.blocks.woocommerce/mini-cart-contents.color.background`). */
+.wp-block-woocommerce-mini-cart-contents {
+  background-color: var(--wp--preset--color--background) !important;
+}
+
+/* Same inline-style problem as the drawer above, and worse: WooCommerce writes
+   the badge colours inline from a server-resolved literal
+   (`$product_count_color` in MiniCart.php), so in dark mode the badge is
+   painted #0a0a0a on a #0a0a0a header - an invisible pill with a floating
+   digit. That is wrong on load, not only after toggling. `!important` restores
+   the intended inverted pill in both modes. */
 .wc-block-mini-cart__badge {
-  background-color: var(--foreground);
-  color: var(--background);
+  background-color: var(--foreground) !important;
+  color: var(--background) !important;
 }
 
 .wc-block-mini-cart__footer {
@@ -296,6 +317,23 @@ WooCommerce Cart Items Block
   border: 1px solid var(--border);
   padding: 0;
   font-size: 0.75rem;
+}
+
+/* The badge paints itself with `background: currentColor`, so it follows the
+   theme and inverts correctly. The number inside does not: WooCommerce colours
+   it `var(--wp--preset--color--base, #fff)`, and this palette has no `base`
+   colour, so it always lands on the hard-coded white. That reads fine on the
+   dark badge in light mode and disappears entirely on the light badge in dark
+   mode. Point it at the background colour, which is what the badge inverts
+   against in both modes.
+
+   The class is doubled to clear WooCommerce's own (0,2,1) rule for the span
+   without depending on stylesheet order - the block styles are enqueued on
+   demand and can load after the theme's. */
+.wc-block-components-order-summary.wc-block-components-order-summary
+  .wc-block-components-order-summary-item__quantity
+  span {
+  color: var(--background);
 }
 
 .wc-block-components-order-summary
